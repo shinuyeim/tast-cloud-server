@@ -1,7 +1,7 @@
 # tast-cloud-server
 [README in English](README_EN.md)
 
-tast-cloud-server是```可溯源农资销售终端```(Traceable agricultural sales terminal, TAST)的一个远程服务端程序，相关API参见 [API.md](API.md)。
+tast-cloud-server是```可溯源农资销售终端```(Traceable Agricultural Sales Terminal, TAST)的一个远程服务端程序，相关API参见 [API.md](API.md)。
 
 该项目管理系统（前端），参见 [elm-manage-vue2](https://github.com/shinuyeim/elm-manage-vue2)。
 

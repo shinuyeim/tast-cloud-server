@@ -1,5 +1,19 @@
 //@baseUrl = http://localhost:3000/api/v1
 @baseUrl = http://192.168.31.6:3000/api/v1
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYWVlNDViNjBkYjZkMmNhY2ZlYWZmMCIsImlhdCI6MTU4ODU5NDkxMSwiZXhwIjoxNTg5MTk5NzExfQ.UO5nUqzz7J2ny4qg2GmTu6eU6QBuv4jm5vfF5OXi2j0
+
+
+# 管理员
+
+### 管理员注册
+POST {{baseUrl}}/register/admin
+Content-Type: application/json
+
+{
+  "user_name": "user1",
+  "password": "12345678"
+}
+
 
 # 商品
 
@@ -97,7 +111,7 @@ POST {{baseUrl}}/customers
 Content-Type: application/json
 
 {
-  "name":"shinyhbg"
+  "name":"shinyh25"
 }
 
 ### 更新顾客信息
