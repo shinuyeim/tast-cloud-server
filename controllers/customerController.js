@@ -1,13 +1,16 @@
 const Customer = require('../models/customer');
+const User = require('../models/user');
 const validator = require('express-validator');
 var async = require('async');
 
+const user_controller = require('./userController');
+
 exports.customer_create = [
-
     // Validate fields.
-    validator.body('name').not().isEmpty().trim().withMessage('name must be specified.').isLength({ max: 20 }).trim().withMessage(' length error.').escape(),
-
-    // Process request after validation and sanitization.
+    validator.body('user_name').not().isEmpty().trim().withMessage('user_name must be specified.').isLength({ max: 20 }).trim().withMessage(' length error.').escape(),
+    validator.body('name').isLength({max:20}).trim().withMessage(' length error.').escape(),
+    validator.body('password').not().isEmpty().trim().withMessage('password must be specified.').isLength({ min: 6, max: 16 }).trim().withMessage(' length error.').escape(),
+    
     (req, res, next) => {
         // Extract the validation errors from a request.
         const errors = validator.validationResult(req);
@@ -17,17 +20,33 @@ exports.customer_create = [
             return res.status(422).send(errors);
         }
         else {
-
             // Data from form is valid.
-            const customer = new Customer({
-                name: req.body.name
-            });
-            // Save customer.
-            customer.save(function (err) {
+            const userdata = {
+                user_name: req.body.user_name,
+                password: req.body.password,
+                role: 2
+            }
+            user_controller.user_create(userdata, function (err, userid) {
                 if (err) { return next(err); }
-                // Successful - redirect to new admin record.
-                res.status(201).send();
-            });
+                // Create Customer object with escaped and trimmed data
+                const customer = new Customer(
+                    {
+                        user: userid,
+                        name:req.body.name,
+                        phone:req.body.phone,
+                        address:req.body.address
+                    }
+                );
+                // Save customer.
+                customer.save(async function (err) {
+                    if (err) {
+                        await User.findByIdAndRemove(userid);
+                        return next(err);
+                    }
+                    // Successful - redirect to new customer record.
+                    res.status(201).send();
+                });
+            })
         }
     }
 ];

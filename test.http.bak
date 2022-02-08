@@ -1,0 +1,168 @@
+//@baseUrl = http://localhost:3000/api/v1
+@baseUrl = http://192.168.31.6:3000/api/v1
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYWVlNDViNjBkYjZkMmNhY2ZlYWZmMCIsImlhdCI6MTU4ODU5NDkxMSwiZXhwIjoxNTg5MTk5NzExfQ.UO5nUqzz7J2ny4qg2GmTu6eU6QBuv4jm5vfF5OXi2j0
+
+
+# 管理员
+
+### 管理员注册
+POST {{baseUrl}}/register/admin
+Content-Type: application/json
+
+{
+  "user_name": "user2",
+  "password": "123456"
+}
+
+
+# 商品
+
+### 新增商品
+POST {{baseUrl}}/merchandises
+Content-Type: application/json
+
+{
+  "name": "攻夫",
+  "price": 20
+}
+
+### 更新商品
+PUT {{baseUrl}}/merchandises/61e823fc384e380c90f8fc58
+Content-Type: application/json
+
+{
+  "name": "稻杰",
+  "price": 20,
+  "specs": "瓶",
+  "productionDate": "2020-5-24",
+  "shelfLife": 2,
+  "manufacturer": "昆明制药厂"
+}
+ 
+### 获取商品信息
+GET {{baseUrl}}/merchandises/5edc855dd2fbea16f056b543
+
+### 获取商品列表
+GET {{baseUrl}}/merchandises?offset=0&limit=3
+
+### 删除商品
+DELETE {{baseUrl}}/merchandises/5ed7b876d815eb449c99bea5
+
+
+# 批发商
+
+### 新增批发商
+POST {{baseUrl}}/wholesalers
+Content-Type: application/json
+
+{
+  "name": "越丰农资"
+}
+
+
+### 更新批发商
+PUT {{baseUrl}}/wholesalers/5f12e9c3a9b2dc258cac076e
+Content-Type: application/json
+
+{
+  "name": "亿家农资",
+  "phone": 18596523214,
+  "address": "云南省曲靖市沾益区东风西路230号"
+}
+# 必须测试以下几项：1)缺少域，某个key不存在不影响更新其他域;2)空字符串，name非空应返回错误;
+ 
+### 获取批发商信息
+GET {{baseUrl}}/wholesalers/5ed5085ae7c5e6270cd5b38a
+
+### 获取批发商列表
+GET {{baseUrl}}/wholesalers?offset=0&limit=1
+
+### 删除批发商
+DELETE {{baseUrl}}/wholesalers/5ed7b0bac20d6f1cac5e2025
+
+# 进货单
+
+### 新增进货单
+POST {{baseUrl}}/purchaseOrders
+Content-Type: application/json
+
+### 更新进货单
+PUT {{baseUrl}}/purchaseOrders/5f1a7d46ef409b0b98cc99a0
+Content-Type: application/json
+
+{
+  "amounts":5,
+  "prices":20
+}
+
+### 获取进货单信息
+GET {{baseUrl}}/purchaseOrders/5f1a7d46ef409b0b98cc99a0
+
+### 获取进货单列表
+GET {{baseUrl}}/purchaseOrders?offset=0&limit=1
+
+### 删除进货单
+DELETE {{baseUrl}}/purchaseOrders/5f1a7d46ef409b0b98cc99a0
+
+# 顾客
+
+### 注册顾客
+POST {{baseUrl}}/register/customer
+Content-Type: application/json
+
+{
+  "user_name": "user1",
+  "password": "12345678"
+}
+
+
+### 新增顾客
+POST {{baseUrl}}/customers
+Content-Type: application/json
+
+{
+  "name":"shinyh26"
+}
+
+### 更新顾客信息
+PUT {{baseUrl}}/customers/61e82557384e380c90f8fc5e
+Content-Type: application/json
+
+{
+  "name":"shinuyeim",
+  "phone":"18208715781",
+  "address":"mala"
+}
+
+### 获取顾客信息
+GET {{baseUrl}}/customers/61e82557384e380c90f8fc5e
+
+### 获取顾客列表
+GET {{baseUrl}}/customers?offset=5&limit=5
+
+### 删除顾客信息
+DELETE {{baseUrl}}/customers/61e82557384e380c90f8fc5e
+
+# 售货单
+
+### 新增售货单
+POST {{baseUrl}}/saleOrders
+Content-Type: application/json
+
+### 更新售货单
+PUT {{baseUrl}}/saleOrders/5f13b04c3055ab24f0d7a1b0
+Content-Type: application/json
+
+{
+  "amounts":5,
+  "prices":20
+}
+
+### 获取售货单信息
+GET {{baseUrl}}/saleOrders/5f13b04c3055ab24f0d7a1b0
+
+### 获取售货单列表
+GET {{baseUrl}}/saleOrders?offset=0&limit=1
+
+### 删除售货单
+DELETE {{baseUrl}}/saleOrders/5f13b04c3055ab24f0d7a1b0

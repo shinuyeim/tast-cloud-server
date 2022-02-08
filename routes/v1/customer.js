@@ -5,7 +5,6 @@ var router = express.Router();
 var customer_controller = require('../../controllers/customerController');
 
 // GET request for list of all customer.
-router.post('/', customer_controller.customer_create);
 
 router.put('/:id', customer_controller.customer_update);
 

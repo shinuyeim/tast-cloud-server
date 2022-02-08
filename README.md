@@ -11,18 +11,20 @@ tast-cloud-server是```可溯源农资销售终端```(Traceable Agricultural Sal
 ------------
 安装
 * 安装 [node.js](http://nodejs.org/)
-* 安装依赖包，在本项目根目录，运行 `npm install`
+* 安装依赖包，在本项目根目录，运行 `yarn install`
 
 启动命令:
-* `npm start` - 启动服务器
-* `npm run devstart` - 使用nodemon启动服务器
+* `yarn start` - 启动服务器
+* `yarn run devstart` - 使用nodemon启动服务器
 * `DEBUG=tast-cloud-server:* npm run devstart` - 在debug模式启动服务器。
 
 ## 功能特性
-- [ ] 进货单接口 -- 进行中
-- [ ] 顾客接口
-- [x] 批发商接口 -- 已完成
-- [x] 商品接口 -- 已完成
+- [x] 用户登录 -- 已完成
+- [x] 管理员注册 -- 已完成
+- [ ] 顾客接口 -- 进行中
+- [ ] 进货单接口 -- 未开始
+- [ ] 批发商接口 -- 未开始
+- [ ] 商品接口 -- 未开始
 
 
 <!-- ## 参与贡献
