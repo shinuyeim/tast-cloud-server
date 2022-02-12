@@ -14,6 +14,7 @@ Content-Type: application/json
   "password": "12345678"
 }
 
+
 # 管理员
 
 ### 管理员注册
@@ -40,16 +41,33 @@ Content-Type: application/json
   "address":"云南昆明"
 }
 
+
 ### 顾客更新
-PUT {{baseUrl}}/customers/62021c9ce9871555d8e4873e
+PUT {{baseUrl}}/customers/620256eee9871555d8e48750
 {{authorization}}
 Content-Type: application/json
 
 {
-  "name": "shinuye",
+  "name": "更新顾客1",
   "phone": "18514964682",
   "address": "张杨路3611号金桥国际商业广场1座B1层"
 }
+
+
+### 获取顾客列表
+GET {{baseUrl}}/customers?offset=0&limit=1
+{{authorization}}
+
+
+### 获取顾客信息
+GET {{baseUrl}}/customers/620256eee9871555d8e48750
+{{authorization}}
+
+
+//  ToDo: 删除顾客时并不能删除user表里面的下的信息。只能删除顾客表里面的信息
+### 删除顾客
+DELETE {{baseUrl}}/customers/6205162117c59246bce31247
+{{authorization}}
 
 
 # 商家
