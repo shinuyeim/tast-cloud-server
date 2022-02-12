@@ -8,9 +8,9 @@ const user_controller = require('./userController');
 exports.customer_create = [
     // Validate fields.
     validator.body('user_name').not().isEmpty().trim().withMessage('user_name must be specified.').isLength({ max: 20 }).trim().withMessage(' length error.').escape(),
-    validator.body('name').isLength({max:20}).trim().withMessage(' length error.').escape(),
+    validator.body('name').isLength({ max: 20 }).trim().withMessage(' length error.').escape(),
     validator.body('password').not().isEmpty().trim().withMessage('password must be specified.').isLength({ min: 6, max: 16 }).trim().withMessage(' length error.').escape(),
-    
+
     (req, res, next) => {
         // Extract the validation errors from a request.
         const errors = validator.validationResult(req);
@@ -32,9 +32,9 @@ exports.customer_create = [
                 const customer = new Customer(
                     {
                         user: userid,
-                        name:req.body.name,
-                        phone:req.body.phone,
-                        address:req.body.address
+                        name: req.body.name,
+                        phone: req.body.phone,
+                        address: req.body.address
                     }
                 );
                 // Save customer.
@@ -88,26 +88,6 @@ exports.customer_update = [
     }
 ];
 
-exports.customer_info = function (req, res, next) {
-
-    Customer.findById(req.params.id).exec((err, existedCustomer) => {
-        if (err) { return next(err) }
-
-        if (!existedCustomer) {
-            return res.status(422).send({
-                message: "Customer not found!"
-            })
-        }
-
-        const resData = {
-            "name": existedCustomer.name,
-            "phone": existedCustomer.phone,
-            "address": existedCustomer.address
-        }
-        return res.status(200).send(resData);
-    });
-};
-
 exports.customer_list = function (req, res, next) {
     const { limit = 20, offset = 0 } = req.query;
 
@@ -138,12 +118,42 @@ exports.customer_list = function (req, res, next) {
 
 };
 
+exports.customer_info = function (req, res, next) {
+
+    Customer.findById(req.params.id).exec((err, existedCustomer) => {
+        if (err) { return next(err) }
+
+        if (!existedCustomer) {
+            return res.status(422).send({
+                message: "Customer not found!"
+            })
+        }
+
+        const resData = {
+            "name": existedCustomer.name,
+            "phone": existedCustomer.phone,
+            "address": existedCustomer.address
+        }
+        return res.status(200).send(resData);
+    });
+};
+
 exports.customer_delete = function (req, res, next) {
 
-    Customer.findByIdAndRemove(req.params.id, function (err) {
-        if (err) { return next(err); }
-        // Successful 
+    //老版本，只能删除商家，不能删除user
+    //Customer.findByIdAndRemove(req.params.id, function (err) {
+    //    if (err) { return next(err); }
+    // Successful 
+    //    res.status(204).send();
+    //});
+
+    const customer_id = req.params.id;
+
+    Customer.findById(customer_id).then(async (existedCustomer) => {
+        if (!existedCustomer) { return res.status(204).send(); }
+        await User.findByIdAndRemove(existedCustomer.user);
+        await existedCustomer.remove();
         res.status(204).send();
-    });
+    })
 }
 

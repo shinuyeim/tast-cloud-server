@@ -6,12 +6,13 @@ const jwt = require("jsonwebtoken");
 var User = require("../../models/user");
 var Admin = require("../../models/admin");
 var Customer = require("../../models/customer");
+var Merchant = require("../../models/merchant");
 
 // Require Router
 const userRouter = require("./user");
 const adminRouter = require("./admin");
 const customerRouter = require("./customer");
-//const merchandiseRouter = require("./merchandise");
+const merchantRouter = require("./merchant");
 //const wholesalerRouter = require("./wholesaler");
 //const purchaseOrderRouter = require("./purchaseOrder");
 //const saleOrderRouter = require("./saleOrder");
@@ -20,12 +21,14 @@ const customerRouter = require("./customer");
 var user_controller = require("../../controllers/userController");
 var admin_controller = require("../../controllers/adminController");
 var customer_controller = require("../../controllers/customerController");
+var merchant_controller = require("../../controllers/merchantController");
 
 // Router login and register
 router.post("/login", user_controller.user_login);
 
 router.post("/register/admin", admin_controller.admin_create);
 router.post("/register/customer", customer_controller.customer_create);
+router.post("/register/merchant", merchant_controller.merchant_create);
 
 /*
 / 路由鉴权，Token解析
@@ -115,6 +118,7 @@ router.use((req, res, next) => {
 
 router.use("/admins", adminRouter);
 router.use("/customers", customerRouter);
+router.use("/merchants", merchantRouter);
 //router.use("/merchandises", merchandiseRouter);
 //router.use("/wholesalers", wholesalerRouter);
 //router.use("/purchaseOrders", purchaseOrderRouter);

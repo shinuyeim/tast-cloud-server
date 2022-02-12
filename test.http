@@ -42,7 +42,7 @@ Content-Type: application/json
 }
 
 
-### 顾客更新
+### 更新顾客信息
 PUT {{baseUrl}}/customers/620256eee9871555d8e48750
 {{authorization}}
 Content-Type: application/json
@@ -64,13 +64,55 @@ GET {{baseUrl}}/customers/620256eee9871555d8e48750
 {{authorization}}
 
 
-//  ToDo: 删除顾客时并不能删除user表里面的下的信息。只能删除顾客表里面的信息
+//  ToDo: 删除顾客时并不能删除user表里面的下的信息。只能删除顾客表里面的信息  
+//已解决，只不过不知道要哪个版本，老版本不删除user 新版本删除user
 ### 删除顾客
-DELETE {{baseUrl}}/customers/6205162117c59246bce31247
+DELETE {{baseUrl}}/customers/62025ff2e9871555d8e48760
 {{authorization}}
 
 
 # 商家
+
+// ToDo: 顾客user_name和商家user_name会出现不能相同，因为不论顾客还是商家都属于user
+### 商家注册
+POST {{baseUrl}}/register/merchant
+Content-Type: application/json
+
+{
+   "user_name": "user9",
+   "password": "123456789",
+   "name":"民心商店",
+   "phone":"15965832145",
+   "introduction":"农资经营",
+   "address":"云南省大坡麻拉"
+}
+
+### 更新商家
+PUT  {{baseUrl}}/merchants/6207b16c95fdf50bb04133f7
+{{authorization}}
+Content-Type: application/json
+
+{
+  "name": "盒马",
+  "phone": "18514965824",
+  "introduction": "盒马是阿里巴巴集团旗下，以数据和技术驱动的新零售平台。盒马希望为消费者打造社区化的一站式新零售体验中心，用科技和人情味带给人们“鲜美生活”",
+  "address": "张杨路3611号金桥国际商业广场1座B1层",
+  "delivery_cost": 5,
+  "min_delivery_price": 20
+}
+
+### 获取商家列表
+GET {{baseUrl}}/merchants?offset=0&limit=1
+{{authorization}}
+
+### 获取商家信息
+GET {{baseUrl}}/merchants/6207b16c95fdf50bb04133f7
+{{authorization}}
+
+### 删除商家
+DELETE {{baseUrl}}/merchants/6207b16c95fdf50bb04133f7
+{{authorization}}
+
 
 # 商品
 
