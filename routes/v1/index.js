@@ -7,12 +7,14 @@ var User = require("../../models/user");
 var Admin = require("../../models/admin");
 var Customer = require("../../models/customer");
 var Merchant = require("../../models/merchant");
+//var merchandise = require("../../models/merchandise");
 
 // Require Router
 const userRouter = require("./user");
 const adminRouter = require("./admin");
 const customerRouter = require("./customer");
 const merchantRouter = require("./merchant");
+const merchandiseRouter = require("./merchandise");
 //const wholesalerRouter = require("./wholesaler");
 //const purchaseOrderRouter = require("./purchaseOrder");
 //const saleOrderRouter = require("./saleOrder");
@@ -22,6 +24,7 @@ var user_controller = require("../../controllers/userController");
 var admin_controller = require("../../controllers/adminController");
 var customer_controller = require("../../controllers/customerController");
 var merchant_controller = require("../../controllers/merchantController");
+//var merchandise_controller=require("../../controllers/merchandiseController");
 
 // Router login and register
 router.post("/login", user_controller.user_login);
@@ -119,7 +122,7 @@ router.use((req, res, next) => {
 router.use("/admins", adminRouter);
 router.use("/customers", customerRouter);
 router.use("/merchants", merchantRouter);
-//router.use("/merchandises", merchandiseRouter);
+router.use("/merchandises", merchandiseRouter);
 //router.use("/wholesalers", wholesalerRouter);
 //router.use("/purchaseOrders", purchaseOrderRouter);
 //router.use("/saleOrders", saleOrderRouter);

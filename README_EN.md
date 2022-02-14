@@ -1,7 +1,7 @@
 # sale-terminal-server
-[README in English](README_EN.md)
+[README in Chinese](README.md)
 
-这是shinuyyeim/elm项目的后端系统，相关API参见 [API.md](API.md)。
+tast-cloud-server是```可溯源农资销售终端```(Traceable Agricultural Sales Terminal, TAST)的一个远程服务端程序，相关API参见 [API.md](API.md)。
 
 该项目管理系统（前端），参见 [elm-manage-vue2](https://github.com/shinuyeim/elm-manage-vue2)。
 
@@ -15,7 +15,7 @@ This app comes with a simple server ([`server.js`](./server.js)), but can be ser
 To use the packaged server:
 
 * Install [node.js](http://nodejs.org/)
-* From the root directory, run `npm install`
+* From the root directory, run `yarn install`
 
 Pupulate MongoDB database
 ```
@@ -23,14 +23,17 @@ node populatedb/populatedb.js mongodb://localhost:27017/elm_server
 ```
 
 Available scripts:
-* `npm start` - Start server
-* `npm run devstart` - Start server with nodemon
-* `DEBUG=elm-server-node:* npm run devstart` - Start server with debug mode
+* `yarn start` - Start server
+* `yarn run devstart` - Start server with nodemon
+* `DEBUG=tast-cloud-server:* npm run devstart` - Start server with debug mode
 
 ## 功能特性
-- [ ] 管理员注册登录 -- 进行中
-- [x] 管理员信息获取 -- 已完成
-- [x] 商家创建更新与获取 -- 已完成
+- [x] 用户登录 -- 已完成
+- [x] 管理员注册 -- 已完成
+- [x] 顾客接口 -- 已完成
+- [ ] 商品接口 -- 未开始
+- [ ] 进货单接口 -- 未开始
+- [ ] 批发商接口 -- 未开始
 
 
 ## 参与贡献

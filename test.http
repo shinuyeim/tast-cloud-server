@@ -1,8 +1,7 @@
 //@baseUrl = http://localhost:3000/api/v1
 @baseUrl = http://192.168.31.6:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDIxYzljZTk4NzE1NTVkOGU0ODczYyIsImlhdCI6MTY0NDMwNTk3MywiZXhwIjoxNjQ0OTEwNzczfQ.Bsy9OoopywHRTHNFVI_I8gO7laLgFTzQzglfIMzqjqI
-
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDg3YmM2ZTcyNDIzMzc2NGZkODY4MiIsImlhdCI6MTY0NDczNjA3MywiZXhwIjoxNjQ1MzQwODczfQ.xDgKB7TWWtmYQKzOvE1A_bmQkMLrHuOt01b8GtDbJd8
 # 登录
 
 ### 用户登录(管理员、顾客)
@@ -10,9 +9,10 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-  "user_name": "user1",
-  "password": "12345678"
+  "user_name": "user2",
+  "password": "123456"
 }
+
 
 
 # 管理员
@@ -25,6 +25,7 @@ Content-Type: application/json
   "user_name": "user2",
   "password": "123456"
 }
+
 
 
 # 顾客
@@ -87,8 +88,9 @@ Content-Type: application/json
    "address":"云南省大坡麻拉"
 }
 
+
 ### 更新商家
-PUT  {{baseUrl}}/merchants/6207b16c95fdf50bb04133f7
+PUT  {{baseUrl}}/merchants/620a5f9565da8f3ebce22afc
 {{authorization}}
 Content-Type: application/json
 
@@ -101,21 +103,41 @@ Content-Type: application/json
   "min_delivery_price": 20
 }
 
+
 ### 获取商家列表
 GET {{baseUrl}}/merchants?offset=0&limit=1
 {{authorization}}
 
+
 ### 获取商家信息
 GET {{baseUrl}}/merchants/6207b16c95fdf50bb04133f7
 {{authorization}}
+
 
 ### 删除商家
 DELETE {{baseUrl}}/merchants/6207b16c95fdf50bb04133f7
 {{authorization}}
 
 
+
 # 商品
 
+### 新增商品
+POST {{baseUrl}}/merchandises
+Content-Type: application/json
+
+{
+  "name": "攻夫",
+  "price": 20
+}
+
+
+
+
 # 销售单
+
+### 新增售货单
+POST {{baseUrl}}/saleOrders
+Content-Type: application/json
 
 # 进货单
