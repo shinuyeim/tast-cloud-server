@@ -124,14 +124,41 @@ DELETE {{baseUrl}}/merchants/6207b16c95fdf50bb04133f7
 
 ### 新增商品
 POST {{baseUrl}}/merchandises
+{{authorization}}
 Content-Type: application/json
 
 {
-  "name": "攻夫",
-  "price": 20
+  "name": "敌杀死",
+  "price": 20,
+  "qrcode":1524224
 }
 
 
+### 更新商品信息
+PUT {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
+{{authorization}}
+Content-Type: application/json
+
+{
+  "name":"敌敌畏",
+  "price":"",
+  "specs":""
+}
+
+
+### 获取商品列表
+GET {{baseUrl}}/merchandises
+{{authorization}}
+
+
+### 获取商品信息
+GET {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
+{{authorization}}
+
+
+### 删除商品
+DELETE {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
+{{authorization}}
 
 
 # 销售单

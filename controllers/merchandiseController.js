@@ -23,7 +23,8 @@ exports.merchandise_create = [
             // Data from form is valid.
             const merchandise = new Merchandise({
                 name: req.body.name,
-                price: req.body.price
+                price: req.body.price,
+                qrcode:req.body.qrcode
             });
             // Save merchandise.
             merchandise.save(function (err) {
@@ -74,30 +75,6 @@ exports.merchandise_update = [
     }
 ];
 
-exports.merchandise_info = function (req, res, next) {
-
-    Merchandise.findById(req.params.id) .exec((err, existedMerchandise) => {
-        if (err) { return next(err) }
-
-        if (!existedMerchandise) {
-            return res.status(422).send({
-                message: "Merchandise not found!"
-            })
-        }
-
-        const resData = {
-            "name": existedMerchandise.name,
-            "price": existedMerchandise.price,
-            "specs": existedMerchandise.specs,
-            "productionDate": existedMerchandise.productionDate,
-            "shelfLife": existedMerchandise.shelfLife,
-            "manufacturer": existedMerchandise.manufacturer
-        }
-        return res.status(200).send(resData);
-    });
-    //const merchandise_id = req.params.id;
-};
-
 exports.merchandise_list = function (req, res, next) {
     const { limit = 20, offset = 0 } = req.query;
 
@@ -126,6 +103,30 @@ exports.merchandise_list = function (req, res, next) {
     }
     )
 
+};
+
+exports.merchandise_info = function (req, res, next) {
+
+    Merchandise.findById(req.params.id) .exec((err, existedMerchandise) => {
+        if (err) { return next(err) }
+
+        if (!existedMerchandise) {
+            return res.status(422).send({
+                message: "Merchandise not found!"
+            })
+        }
+
+        const resData = {
+            "name": existedMerchandise.name,
+            "price": existedMerchandise.price,
+            "specs": existedMerchandise.specs,
+            "productionDate": existedMerchandise.productionDate,
+            "shelfLife": existedMerchandise.shelfLife,
+            "manufacturer": existedMerchandise.manufacturer
+        }
+        return res.status(200).send(resData);
+    });
+    //const merchandise_id = req.params.id;
 };
 
 exports.merchandise_delete = function (req, res, next) {

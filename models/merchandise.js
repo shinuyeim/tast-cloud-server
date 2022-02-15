@@ -10,7 +10,9 @@ const MerchandiseSchema = new Schema({
 	specs: { type: String, enmu: ['盒', '瓶', '袋'] },//规格
 	productionDate: { type: Date },//生产日期  
 	shelfLife: { type: Number, min: 0, max: 20, default: 2 },//保质期
-	manufacturer: { type: String, maxlength: 40 } //制造商
+	manufacturer: { type: String, maxlength: 40 }, //制造商
+	qrcode: { type: String, requied: true }
+
 })
 
 module.exports = mongoose.model('Merchandise', MerchandiseSchema);
