@@ -1,7 +1,7 @@
 //@baseUrl = http://localhost:3000/api/v1
 @baseUrl = http://192.168.31.6:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDg3YmM2ZTcyNDIzMzc2NGZkODY4MiIsImlhdCI6MTY0NDczNjA3MywiZXhwIjoxNjQ1MzQwODczfQ.xDgKB7TWWtmYQKzOvE1A_bmQkMLrHuOt01b8GtDbJd8
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY0NTE5NDI3MCwiZXhwIjoxNjQ1Nzk5MDcwfQ.68hfWu9GxIgr-u2RETGi34_jPLO83fwlICwL9Y5b23g
 # 登录
 
 ### 用户登录(管理员、顾客)
@@ -9,8 +9,8 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-  "user_name": "user2",
-  "password": "123456"
+  "user_name": "user9",
+  "password": "123456789"
 }
 
 
@@ -134,37 +134,39 @@ Content-Type: application/json
 }
 
 
-### 更新商品信息
-PUT {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
-{{authorization}}
-Content-Type: application/json
+# ### 更新商品信息
+# PUT {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
+# {{authorization}}
+# Content-Type: application/json
 
-{
-  "name":"敌敌畏",
-  "price":"",
-  "specs":""
-}
-
-
-### 获取商品列表
-GET {{baseUrl}}/merchandises
-{{authorization}}
+# {
+#   "name":"敌敌畏",
+#   "price":"",
+#   "specs":""
+# }
 
 
-### 获取商品信息
-GET {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
-{{authorization}}
+# ### 获取商品列表
+# GET {{baseUrl}}/merchandises
+# {{authorization}}
 
 
-### 删除商品
-DELETE {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
-{{authorization}}
+# ### 获取商品信息
+# GET {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
+# {{authorization}}
 
 
-# 销售单
+# ### 删除商品
+# DELETE {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
+# {{authorization}}
 
-### 新增售货单
-POST {{baseUrl}}/saleOrders
-Content-Type: application/json
 
-# 进货单
+# # 销售单
+
+# ### 新增售货单
+# POST {{baseUrl}}/saleOrders
+# {{authorization}}
+# Content-Type: application/json
+
+# # 进货单
+

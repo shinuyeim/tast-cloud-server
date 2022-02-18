@@ -25,12 +25,12 @@ exports.merchant_create = [
         }
         else {
             // Data from form is valid
-            const merchantdata = {
+            const userdata = {
                 user_name: req.body.user_name,
                 password: req.body.password,
                 role: 1
             }
-            user_controller.user_create(merchantdata, function (err, userid) {
+            user_controller.user_create(userdata, function (err, userid) {
                 if (err) { return next(err); }
                 // Create Merchant object with escaped and trimmed data
                 const merchant = new Merchant(

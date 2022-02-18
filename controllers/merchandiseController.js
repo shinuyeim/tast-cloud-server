@@ -20,11 +20,13 @@ exports.merchandise_create = [
         }
         else {
 
+            console.log(req.auth);
             // Data from form is valid.
             const merchandise = new Merchandise({
                 name: req.body.name,
                 price: req.body.price,
-                qrcode:req.body.qrcode
+                qrcode: req.body.qrcode,
+                merchant: req.auth.merchantid
             });
             // Save merchandise.
             merchandise.save(function (err) {
@@ -107,7 +109,7 @@ exports.merchandise_list = function (req, res, next) {
 
 exports.merchandise_info = function (req, res, next) {
 
-    Merchandise.findById(req.params.id) .exec((err, existedMerchandise) => {
+    Merchandise.findById(req.params.id).exec((err, existedMerchandise) => {
         if (err) { return next(err) }
 
         if (!existedMerchandise) {
@@ -133,7 +135,7 @@ exports.merchandise_delete = function (req, res, next) {
 
     //const Merchandise_id = req.params.id;
 
-    Merchandise.findByIdAndRemove(req.params.id ,function (err) {
+    Merchandise.findByIdAndRemove(req.params.id, function (err) {
         if (err) { return next(err); }
         // Successful 
         res.status(204).send();
