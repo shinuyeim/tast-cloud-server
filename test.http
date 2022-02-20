@@ -134,31 +134,35 @@ Content-Type: application/json
 }
 
 
-# ### 更新商品信息
-# PUT {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
-# {{authorization}}
-# Content-Type: application/json
+### 更新商品信息
+PUT {{baseUrl}}/merchandises/620fac3c7a5dc3356c7ab883
+{{authorization}}
+Content-Type: application/json
 
-# {
-#   "name":"敌敌畏",
-#   "price":"",
-#   "specs":""
-# }
-
-
-# ### 获取商品列表
-# GET {{baseUrl}}/merchandises
-# {{authorization}}
-
-
-# ### 获取商品信息
-# GET {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
-# {{authorization}}
+{
+  "name":"敌敌畏",
+  "price":"25",
+  "specs":"袋",
+  "productionDate":"",
+  "shelfLife":"",
+  "manufacturer":"",
+  "qrcode":""
+}
 
 
-# ### 删除商品
-# DELETE {{baseUrl}}/merchandises/620b39bb2fb0e7279ca627a0
-# {{authorization}}
+### 获取商品列表
+GET {{baseUrl}}/merchandises
+{{authorization}}
+
+
+### 获取商品信息
+GET {{baseUrl}}/merchandises/620fac3c7a5dc3356c7ab883
+{{authorization}}
+
+
+### 删除商品
+DELETE {{baseUrl}}/merchandises/620fac3c7a5dc3356c7ab883
+{{authorization}}
 
 
 # # 销售单
