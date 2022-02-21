@@ -46,7 +46,6 @@ exports.saleOrder_update = [
                 amounts: req.body.amounts,
                 prices: req.body.prices
             }
-            console.log(saleOrder);
             // { "omitUndefined": true } 忽略未定义的属性
             SaleOrder.findByIdAndUpdate(req.params.id, saleOrder, { "omitUndefined": true }, function (err) {
                 if (err) {
@@ -58,36 +57,6 @@ exports.saleOrder_update = [
         }
     }
 ];
-
-exports.saleOrder_info = function (req, res, next) {
-
-    SaleOrder.findById(req.params.id).exec((err, existedSaleOrder) => {
-        if (err) { return next(err) }
-
-        if (!existedSaleOrder) {
-            return res.status(422).send({
-                message: "SaleOrder not found!"
-            })
-        }
-
-        const resData = {
-            // "name": existedSaleOrder.merchandise.name,
-            // "price": existedSaleOrder.merchandise.price,
-            // "specs": existedSaleOrder.merchandise.specs,
-            // "productionDate": existedSaleOrder.merchandise.productionDate,
-            // "shelfLife": existedSaleOrder.merchandise.shelfLife,
-            // "manufacturer": existedSaleOrder.merchandise.manufacturer,
-            "date": existedSaleOrder.date,
-            "amounts": existedSaleOrder.amounts,
-            "prices": existedSaleOrder.prices,
-            // TODO: name冲突
-            // "name":existedSaleOrder.customer.name,
-            // "phone": existedSaleOrder.customer.phone,
-            // "address": existedSaleOrder.customer.address
-        }
-        return res.status(200).send(resData);
-    });
-};
 
 exports.saleOrder_list = function (req, res, next) {
     const { limit = 20, offset = 0 } = req.query;
@@ -117,6 +86,36 @@ exports.saleOrder_list = function (req, res, next) {
     }
     )
 
+};
+
+exports.saleOrder_info = function (req, res, next) {
+
+    SaleOrder.findById(req.params.id).exec((err, existedSaleOrder) => {
+        if (err) { return next(err) }
+
+        if (!existedSaleOrder) {
+            return res.status(422).send({
+                message: "SaleOrder not found!"
+            })
+        }
+
+        const resData = {
+            // "name": existedSaleOrder.merchandise.name,
+            // "price": existedSaleOrder.merchandise.price,
+            // "specs": existedSaleOrder.merchandise.specs,
+            // "productionDate": existedSaleOrder.merchandise.productionDate,
+            // "shelfLife": existedSaleOrder.merchandise.shelfLife,
+            // "manufacturer": existedSaleOrder.merchandise.manufacturer,
+            "date": existedSaleOrder.date,
+            "amounts": existedSaleOrder.amounts,
+            "prices": existedSaleOrder.prices,
+            // TODO: name冲突
+            // "name":existedSaleOrder.customer.name,
+            // "phone": existedSaleOrder.customer.phone,
+            // "address": existedSaleOrder.customer.address
+        }
+        return res.status(200).send(resData);
+    });
 };
 
 exports.saleOrder_delete = function (req, res, next) {

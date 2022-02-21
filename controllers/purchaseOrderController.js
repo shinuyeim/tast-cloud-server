@@ -57,6 +57,36 @@ exports.purchaseOrder_update = [
     }
 ];
 
+exports.purchaseOrder_list = function (req, res, next) {
+    const { limit = 20, offset = 0 } = req.query;
+
+    async.parallel({
+        total_count: function (callback) {
+            PurchaseOrder.countDocuments().exec(callback)
+        },
+        list_PurchaseOrders: function (callback) {
+            PurchaseOrder.find()
+                .sort({ 'name': 'descending' })
+                .skip(Number(offset))
+                .limit(Number(limit))
+                .exec(callback)
+        }
+    }, function (err, result) {
+        if (err) { return next(err); }
+        res.status(200).json({
+            metadata: {
+                Total: result.total_count,
+                Limit: Number(limit),
+                LimitOffset: Number(offset),
+                ReturnedRows: result.list_PurchaseOrders.length
+            },
+            data: result.list_PurchaseOrders
+        })
+    }
+    )
+
+};
+
 exports.purchaseOrder_info = function (req, res, next) {
 
     PurchaseOrder.findById(req.params.id).exec((err, existedPurchaseOrder) => {
@@ -86,36 +116,6 @@ exports.purchaseOrder_info = function (req, res, next) {
         }
         return res.status(200).send(resData);
     });
-};
-
-exports.purchaseOrder_list = function (req, res, next) {
-    const { limit = 20, offset = 0 } = req.query;
-
-    async.parallel({
-        total_count: function (callback) {
-            PurchaseOrder.countDocuments().exec(callback)
-        },
-        list_PurchaseOrders: function (callback) {
-            PurchaseOrder.find()
-                .sort({ 'name': 'descending' })
-                .skip(Number(offset))
-                .limit(Number(limit))
-                .exec(callback)
-        }
-    }, function (err, result) {
-        if (err) { return next(err); }
-        res.status(200).json({
-            metadata: {
-                Total: result.total_count,
-                Limit: Number(limit),
-                LimitOffset: Number(offset),
-                ReturnedRows: result.list_PurchaseOrders.length
-            },
-            data: result.list_PurchaseOrders
-        })
-    }
-    )
-
 };
 
 exports.purchaseOrder_delete = function (req, res, next) {

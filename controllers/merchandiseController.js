@@ -19,8 +19,6 @@ exports.merchandise_create = [
             return res.status(422).send(errors);
         }
         else {
-
-            console.log(req.auth);
             // Data from form is valid.
             const merchandise = new Merchandise({
                 name: req.body.name,

@@ -167,10 +167,36 @@ DELETE {{baseUrl}}/merchandises/620fac3c7a5dc3356c7ab883
 
 # # 销售单
 
-# ### 新增售货单
-# POST {{baseUrl}}/saleOrders
-# {{authorization}}
-# Content-Type: application/json
+### 新增销售单
+POST {{baseUrl}}/saleOrders
+{{authorization}}
+
+
+### 更新销售单
+PUT {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
+{{authorization}}
+Content-Type: application/json
+
+{
+  "amounts":23,
+  "prices":120
+}
+
+
+### 获取销售单列表
+GET {{baseUrl}}/saleOrders
+{{authorization}}
+
+
+### 获取销售单信息
+GET {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
+{{authorization}}
+
+
+### 删除销售单
+DELETE {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
+{{authorization}}
+
 
 # # 进货单
 

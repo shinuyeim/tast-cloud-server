@@ -17,7 +17,7 @@ const merchantRouter = require("./merchant");
 const merchandiseRouter = require("./merchandise");
 //const wholesalerRouter = require("./wholesaler");
 //const purchaseOrderRouter = require("./purchaseOrder");
-//const saleOrderRouter = require("./saleOrder");
+const saleOrderRouter = require("./saleOrder");
 
 // Require controllers.
 var user_controller = require("../../controllers/userController");
@@ -125,6 +125,6 @@ router.use("/merchants", merchantRouter);
 router.use("/merchandises", merchandiseRouter);
 //router.use("/wholesalers", wholesalerRouter);
 //router.use("/purchaseOrders", purchaseOrderRouter);
-//router.use("/saleOrders", saleOrderRouter);
+router.use("/saleOrders", saleOrderRouter);
 
 module.exports = router;
