@@ -15,9 +15,10 @@ const adminRouter = require("./admin");
 const customerRouter = require("./customer");
 const merchantRouter = require("./merchant");
 const merchandiseRouter = require("./merchandise");
-//const wholesalerRouter = require("./wholesaler");
+const wholesalerRouter = require("./wholesaler");
 const purchaseOrderRouter = require("./purchaseOrder");
 const saleOrderRouter = require("./saleOrder");
+
 
 // Require controllers.
 var user_controller = require("../../controllers/userController");
@@ -123,7 +124,7 @@ router.use("/admins", adminRouter);
 router.use("/customers", customerRouter);
 router.use("/merchants", merchantRouter);
 router.use("/merchandises", merchandiseRouter);
-//router.use("/wholesalers", wholesalerRouter);
+router.use("/wholesalers", wholesalerRouter);
 router.use("/purchaseOrders", purchaseOrderRouter);
 router.use("/saleOrders", saleOrderRouter);
 

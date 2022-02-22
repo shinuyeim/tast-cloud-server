@@ -230,3 +230,41 @@ GET {{baseUrl}}/purchaseOrders/62149adf48c4c55e68f98ecd
 DELETE {{baseUrl}}/purchaseOrders/62149adf48c4c55e68f98ecd
 {{authorization}}
 
+
+# 批发商
+
+
+### 新增批发商
+POST {{baseUrl}}/wholesalers
+{{authorization}}
+Content-Type: application/json
+
+{
+  "name": "人民商店"
+}
+
+
+### 更新批发商
+PUT {{baseUrl}}/wholesalers/6214db82fddf321fec5a239f
+{{authorization}}
+Content-Type: application/json
+
+{
+  "phone":"15869324569",
+  "address":"将军镇521号"
+}
+
+
+### 获取批发商列表
+GET {{baseUrl}}/wholesalers
+{{authorization}}
+
+
+### 获取商家信息
+GET {{baseUrl}}/wholesalers/6214db82fddf321fec5a239f
+{{authorization}}
+
+
+### 删除批发商
+DELETE {{baseUrl}}/wholesalers/6214db82fddf321fec5a239f
+{{authorization}}
