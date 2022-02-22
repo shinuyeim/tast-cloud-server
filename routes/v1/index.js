@@ -16,7 +16,7 @@ const customerRouter = require("./customer");
 const merchantRouter = require("./merchant");
 const merchandiseRouter = require("./merchandise");
 //const wholesalerRouter = require("./wholesaler");
-//const purchaseOrderRouter = require("./purchaseOrder");
+const purchaseOrderRouter = require("./purchaseOrder");
 const saleOrderRouter = require("./saleOrder");
 
 // Require controllers.
@@ -124,7 +124,7 @@ router.use("/customers", customerRouter);
 router.use("/merchants", merchantRouter);
 router.use("/merchandises", merchandiseRouter);
 //router.use("/wholesalers", wholesalerRouter);
-//router.use("/purchaseOrders", purchaseOrderRouter);
+router.use("/purchaseOrders", purchaseOrderRouter);
 router.use("/saleOrders", saleOrderRouter);
 
 module.exports = router;

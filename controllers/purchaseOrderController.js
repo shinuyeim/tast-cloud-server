@@ -44,7 +44,6 @@ exports.purchaseOrder_update = [
                 amounts: req.body.amounts,
                 prices: req.body.prices
             }
-            console.log(purchaseOrder);
             // { "omitUndefined": true } 忽略未定义的属性
             PurchaseOrder.findByIdAndUpdate(req.params.id, purchaseOrder, { "omitUndefined": true }, function (err) {
                 if (err) {

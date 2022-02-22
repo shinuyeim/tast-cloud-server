@@ -198,5 +198,35 @@ DELETE {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
 {{authorization}}
 
 
-# # 进货单
+ # 进货单
+
+### 新增进货单
+POST {{baseUrl}}/purchaseOrders
+{{authorization}}
+
+
+### 更新进货单
+PUT {{baseUrl}}/purchaseOrders/62149adf48c4c55e68f98ecd
+{{authorization}}
+Content-Type: application/json
+
+{
+  "amounts":23,
+  "prices":120
+}
+
+
+### 获取进货单列表
+GET {{baseUrl}}/purchaseOrders
+{{authorization}}
+
+
+### 获取进货单信息
+GET {{baseUrl}}/purchaseOrders/62149adf48c4c55e68f98ecd
+{{authorization}}
+
+
+### 删除销售单
+DELETE {{baseUrl}}/purchaseOrders/62149adf48c4c55e68f98ecd
+{{authorization}}
 
