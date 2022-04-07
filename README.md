@@ -3,7 +3,9 @@
 
 tast-cloud-server是```可溯源农资销售终端```(Traceable Agricultural Sales Terminal, TAST)的一个远程服务端程序，相关API参见 [API.md](API.md)。
 
-该项目管理系统（前端），参见 [elm-manage-vue2](https://github.com/shinuyeim/elm-manage-vue2)。
+该项目管理系统（前端），参见 [tast-web-sales-terminal](https://github.com/shinuyeim/tast-web-sales-terminal)。
+
+该项目微信小程序系统，参见[WeChatMiniProgram](https://github.com/shinuyeim/WeChatMiniProgram)。
 
 ## 启动
 
@@ -23,9 +25,9 @@ tast-cloud-server是```可溯源农资销售终端```(Traceable Agricultural Sal
 - [x] 管理员注册 -- 已完成
 - [x] 顾客接口 -- 已完成
 - [x] 商品接口 -- 已完成
-- [ ] 进货单接口 -- 未开始
-- [ ] 批发商接口 -- 未开始
-
+- [x] 商家接口 -- 已完成
+- [x] 批发商接口 -- 已完成
+- [x] 进货单接口 -- 改进中
 
 
 <!-- ## 参与贡献
