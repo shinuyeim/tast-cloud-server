@@ -1,7 +1,7 @@
 //@baseUrl = http://localhost:3000/api/v1
-@baseUrl = http://192.168.31.6:3000/api/v1
+@baseUrl = http://172.26.86.113:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY0NTE5NDI3MCwiZXhwIjoxNjQ1Nzk5MDcwfQ.68hfWu9GxIgr-u2RETGi34_jPLO83fwlICwL9Y5b23g
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY0OTMwNTc0OSwiZXhwIjoxNjQ5OTEwNTQ5fQ.uGnI-xBbg4digL4R-Bj_Y6CqQ1a0mqHJnUIC6AJc--A
 # 登录
 
 ### 用户登录(管理员、顾客)
@@ -198,7 +198,7 @@ DELETE {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
 {{authorization}}
 
 
- # 进货单
+# 进货单
 
 ### 新增进货单
 POST {{baseUrl}}/purchaseOrders
@@ -206,13 +206,13 @@ POST {{baseUrl}}/purchaseOrders
 
 
 ### 更新进货单
-PUT {{baseUrl}}/purchaseOrders/62149adf48c4c55e68f98ecd
+PUT {{baseUrl}}/purchaseOrders/624e70d114c5ab17f8a2adf4
 {{authorization}}
 Content-Type: application/json
 
 {
-  "amounts":23,
-  "prices":120
+  "totalamounts":23,
+  "totalprices":120
 }
 
 
@@ -222,12 +222,12 @@ GET {{baseUrl}}/purchaseOrders
 
 
 ### 获取进货单信息
-GET {{baseUrl}}/purchaseOrders/62149adf48c4c55e68f98ecd
+GET {{baseUrl}}/purchaseOrders/624e68f17c5f5635ac2c12b8
 {{authorization}}
 
 
 ### 删除销售单
-DELETE {{baseUrl}}/purchaseOrders/62149adf48c4c55e68f98ecd
+DELETE {{baseUrl}}/purchaseOrders/624e68f17c5f5635ac2c12b8
 {{authorization}}
 
 
@@ -267,4 +267,28 @@ GET {{baseUrl}}/wholesalers/6214db82fddf321fec5a239f
 
 ### 删除批发商
 DELETE {{baseUrl}}/wholesalers/6214db82fddf321fec5a239f
+{{authorization}}
+
+
+
+# 进货单Item
+
+### 新增进货单Item
+POST {{baseUrl}}/purchaseOrdersItem
+{{authorization}}
+
+### 更新进货单Item
+PUT {{baseUrl}}/purchaseOrdersItem/624e795510e5dc391036d7a4
+{{authorization}}
+Content-Type: application/json
+
+{
+  "amounts":23,
+  "price":10,
+  "totalprices":120
+}
+
+
+### 删除销售单
+DELETE {{baseUrl}}/purchaseOrdersItem/624e795510e5dc391036d7a4
 {{authorization}}

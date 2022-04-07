@@ -18,6 +18,7 @@ const merchandiseRouter = require("./merchandise");
 const wholesalerRouter = require("./wholesaler");
 const purchaseOrderRouter = require("./purchaseOrder");
 const saleOrderRouter = require("./saleOrder");
+const purchaseOrderItemRouter = require("./purchaseOrderItem");
 
 
 // Require controllers.
@@ -127,5 +128,6 @@ router.use("/merchandises", merchandiseRouter);
 router.use("/wholesalers", wholesalerRouter);
 router.use("/purchaseOrders", purchaseOrderRouter);
 router.use("/saleOrders", saleOrderRouter);
+router.use("/purchaseOrdersItem", purchaseOrderItemRouter);
 
 module.exports = router;

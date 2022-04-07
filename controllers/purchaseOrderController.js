@@ -23,11 +23,10 @@ exports.purchaseOrder_create = function (req, res, next) {
 
 exports.purchaseOrder_update = [
     // Validate fields.
-    // TODO: name :"" 会使name变为空
     validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
     validator.body('merchandises').not().exists().withMessage('Can not update merchandises'),
-    validator.body('amounts').if((value, { req }) => req.body.amounts).isFloat({ min: 0 }).trim().withMessage('amounts must be a number greater 0.').trim().escape(),
-    validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('prices must be a number greater 0.').trim().escape(),
+    validator.body('totalamounts').if((value, { req }) => req.body.totalamounts).isFloat({ min: 0 }).trim().withMessage('totalamounts must be a number greater 0.').trim().escape(),
+    validator.body('totalprices').if((value, { req }) => req.body.totalprices).isFloat({ min: 0 }).trim().withMessage('totalprices must be a number greater 0.').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
         // Extract the validation errors from a request.
@@ -41,8 +40,8 @@ exports.purchaseOrder_update = [
         else {
             // Data is valid. Update the record.
             const purchaseOrder = {
-                amounts: req.body.amounts,
-                prices: req.body.prices
+                totalamounts: req.body.totalamounts,
+                totalprices: req.body.totalprices
             }
             // { "omitUndefined": true } 忽略未定义的属性
             PurchaseOrder.findByIdAndUpdate(req.params.id, purchaseOrder, { "omitUndefined": true }, function (err) {
@@ -105,8 +104,8 @@ exports.purchaseOrder_info = function (req, res, next) {
             // "shelfLife": existedPurchaseOrder.merchandise.shelfLife,
             // "manufacturer": existedPurchaseOrder.merchandise.manufacturer,
             "date": existedPurchaseOrder.date,
-            "amounts": existedPurchaseOrder.amounts,
-            "prices": existedPurchaseOrder.prices,
+            "totalamounts": existedPurchaseOrder.totalamounts,
+            "totalprices": existedPurchaseOrder.totalprices,
             // TODO: name冲突
             // "name":existedPurchaseOrder.wholesaler.name,
             // "phone": existedPurchaseOrder.wholesaler.phone,
