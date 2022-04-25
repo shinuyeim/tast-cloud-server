@@ -13,7 +13,7 @@ exports.purchaseOrderItem_create = [
     // Validate fields.
     validator.body('purchaseOrder').not().isEmpty().trim().withMessage('purchaseOrder is empty').escape(),
     validator.body('merchandises').not().isEmpty().trim().withMessage('merchandises is empty').escape(),
-   
+
     (req, res, next) => {
         // Extract the validation errors from a request.
 
@@ -26,7 +26,7 @@ exports.purchaseOrderItem_create = [
         else {
             // Data is valid. Update the record.
 
-            const purchaseOrderItem =  new PurchaseOrderItem({
+            const purchaseOrderItem = new PurchaseOrderItem({
                 purchaseOrder: req.body.purchaseOrder,
                 merchandises: req.body.merchandises
             });
@@ -144,5 +144,26 @@ exports.purchaseOrderItem_delete = function (req, res, next) {
         if (err) { return next(err); }
         // Successful 
         res.status(204).send();
+    });
+};
+
+//在purchaseOrderItem中查找所有属于同一订单编号的商品
+
+exports.purchaseOrderItem_merchandiselist = function (req, res, next) {
+
+    PurchaseOrderItem.findById(req.params.purchaseOrder).exec((err, existedPurchaseOrder) => {
+        if (err) { return next(err) }
+        res.send(req.params.purchaseOrder);
+
+        if (!existedPurchaseOrder) {
+            return res.status(422).send({
+                message: "PurchaseOrder not found!"
+            })
+        }
+
+        const resData = {
+           "merchandises":existedPurchaseOrder.merchandises
+        }
+        return res.status(200).send(resData);
     });
 };

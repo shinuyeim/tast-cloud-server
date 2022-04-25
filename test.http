@@ -188,7 +188,7 @@ Content-Type: application/json
 ### 获取销售单列表
 GET {{baseUrl}}/saleOrders
 {{authorization}}
-
+ 
 
 ### 获取销售单信息
 GET {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
@@ -296,5 +296,5 @@ Content-Type: application/json
 }
 
 ### 获取进货单商品列表
-GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder/6214db82fddf321fec5a239f
+GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder/6264fd6ab2a8ca35106462dc
 {{authorization}}
