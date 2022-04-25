@@ -1,14 +1,16 @@
 //@baseUrl = http://localhost:3000/api/v1
+//
+//@baseUrl = http://192.168.16.178:3000/api/v1
 @baseUrl = http://172.26.86.113:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY0OTMwNTc0OSwiZXhwIjoxNjQ5OTEwNTQ5fQ.uGnI-xBbg4digL4R-Bj_Y6CqQ1a0mqHJnUIC6AJc--A
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY1MDcwODkyMywiZXhwIjoxNjUxMzEzNzIzfQ.tWhJBs1WtEgIbssnzb9H-jllP9o3pdt1OyW4BcsYrLA
 # 登录
 
 ### 用户登录(管理员、顾客)
 POST {{baseUrl}}/login
 Content-Type: application/json
 
-{
+{ 
   "user_name": "user9",
   "password": "123456789"
 }
@@ -165,7 +167,7 @@ DELETE {{baseUrl}}/merchandises/620fac3c7a5dc3356c7ab883
 {{authorization}}
 
 
-# # 销售单
+ # 销售单
 
 ### 新增销售单
 POST {{baseUrl}}/saleOrders
@@ -173,7 +175,7 @@ POST {{baseUrl}}/saleOrders
 
 
 ### 更新销售单
-PUT {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
+PUT {{baseUrl}}/saleOrders/6263d1f4526ac6545c42726c
 {{authorization}}
 Content-Type: application/json
 
@@ -206,13 +208,12 @@ POST {{baseUrl}}/purchaseOrders
 
 
 ### 更新进货单
-PUT {{baseUrl}}/purchaseOrders/624e70d114c5ab17f8a2adf4
+PUT {{baseUrl}}/purchaseOrders/626547ba945fa70b5cb42780   
 {{authorization}}
 Content-Type: application/json
 
 {
-  "totalamounts":23,
-  "totalprices":120
+ "wholesaler":"6264fc40c52d8d6610f1101d"
 }
 
 
@@ -222,7 +223,7 @@ GET {{baseUrl}}/purchaseOrders
 
 
 ### 获取进货单信息
-GET {{baseUrl}}/purchaseOrders/624e68f17c5f5635ac2c12b8
+GET {{baseUrl}}/purchaseOrders/626547ba945fa70b5cb42780
 {{authorization}}
 
 
@@ -276,19 +277,24 @@ DELETE {{baseUrl}}/wholesalers/6214db82fddf321fec5a239f
 ### 新增进货单Item
 POST {{baseUrl}}/purchaseOrdersItem
 {{authorization}}
+Content-Type: application/json
+
+{
+  "purchaseOrder":"6264fd6ab2a8ca35106462dc",
+  "merchandises":"6222e26b3eb8230d88123248"
+}
 
 ### 更新进货单Item
-PUT {{baseUrl}}/purchaseOrdersItem/624e795510e5dc391036d7a4
+PUT {{baseUrl}}/purchaseOrdersItem/6265456648b5d8173c0c5265
 {{authorization}}
 Content-Type: application/json
 
 {
   "amounts":23,
   "price":10,
-  "totalprices":120
+  "merchandises":"6222e26b3eb8230d88123249"
 }
 
-
-### 删除销售单
-DELETE {{baseUrl}}/purchaseOrdersItem/624e795510e5dc391036d7a4
+### 获取进货单商品列表
+GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder/6214db82fddf321fec5a239f
 {{authorization}}

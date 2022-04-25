@@ -9,26 +9,11 @@ var async = require('async');
 // const merchandise_controller = require('./merchandiseController');
 // const wholesaler_controller = require('./wholesalerController');
 
-exports.purchaseOrderItem_create = function (req, res, next) {
-    const purchaseOrderItem = new PurchaseOrderItem({
-
-    });
-    //save purchaseOrder.
-    purchaseOrderItem.save(function (err) {
-        if (err) { return next(err); }
-        // Successful - redirect to new admin record.
-        res.status(201).send();
-    });
-}
-
-exports.purchaseOrderItem_update = [
+exports.purchaseOrderItem_create = [
     // Validate fields.
-    //validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
-    validator.body('merchandises').not().exists().withMessage('Can not update merchandises'),
-    validator.body('amounts').if((value, { req }) => req.body.totalamounts).isFloat({ min: 0 }).trim().withMessage('amounts must be a number greater 0.').trim().escape(),
-    validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('prices must be a number greater 0.').trim().escape(),
-    validator.body('totalprices').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('totalprices must be a number greater 0.').trim().escape(),
-    // Process request after validation and sanitization.
+    validator.body('purchaseOrder').not().isEmpty().trim().withMessage('purchaseOrder is empty').escape(),
+    validator.body('merchandises').not().isEmpty().trim().withMessage('merchandises is empty').escape(),
+   
     (req, res, next) => {
         // Extract the validation errors from a request.
 
@@ -40,12 +25,45 @@ exports.purchaseOrderItem_update = [
         }
         else {
             // Data is valid. Update the record.
-           
-            //ToDo : totalprices应该是用amounts 和 price 计算得来
+
+            const purchaseOrderItem =  new PurchaseOrderItem({
+                purchaseOrder: req.body.purchaseOrder,
+                merchandises: req.body.merchandises
+            });
+            // { "omitUndefined": true } 忽略未定义的属性
+            purchaseOrderItem.save(function (err) {
+                if (err) { return next(err); }
+                // Successful - redirect to new admin record.
+                res.status(201).send();
+            });
+        }
+    }
+];
+
+
+exports.purchaseOrderItem_update = [
+    // Validate fields.
+    //validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
+    //validator.body('merchandises').not().exists().withMessage('Can not add merchandises'),
+    validator.body('amounts').if((value, { req }) => req.body.totalamounts).isFloat({ min: 0 }).trim().withMessage('amounts must be a number greater 0.').trim().escape(),
+    validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('prices must be a number greater 0.').trim().escape(),
+    // Process request after validation and sanitization.
+    (req, res, next) => {
+        // Extract the validation errors from a request.
+
+        const errors = validator.validationResult(req);
+
+        if (!errors.isEmpty()) {
+            // There are errors. Render form again with sanitized values/errors messages.
+            return res.status(422).send(errors); 0
+        }
+        else {
+            // Data is valid. Update the record.
+
             const purchaseOrderItem = {
+                merchandises: req.body.merchandises,
                 amounts: req.body.amounts,
-                price: req.body.price,
-                totalprices:req.body.totalprices
+                price: req.body.price
             }
             // { "omitUndefined": true } 忽略未定义的属性
             PurchaseOrderItem.findByIdAndUpdate(req.params.id, purchaseOrderItem, { "omitUndefined": true }, function (err) {

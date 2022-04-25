@@ -9,6 +9,9 @@ router.post('/', purchaseOrderItem_controller.purchaseOrderItem_create);
 
 router.put('/:id', purchaseOrderItem_controller.purchaseOrderItem_update);
 
+
+router.get('/purchaseOrder/:id',purchaseOrderItem_controller.purchaseOrderItem_merchandiselist);
+
 // router.get('/:id', purchaseOrderItem_controller.purchaseOrderItem_info);
 
 // router.get('/', purchaseOrderItem_controller.purchaseOrderItem_list);

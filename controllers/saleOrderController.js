@@ -26,7 +26,7 @@ exports.saleOrder_create = function (req, res, next) {
 exports.saleOrder_update = [
     // Validate fields.
     // TODO: name :"" 会使name变为空
-    validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
+    validator.body('customer').not().exists().withMessage('Can not update customer'),
     validator.body('merchandises').not().exists().withMessage('Can not update merchandises'),
     validator.body('amounts').if((value, { req }) => req.body.amounts).isFloat({ min: 0 }).trim().withMessage('amounts must be a number greater 0.').trim().escape(),
     validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('price must be a number greater 0.').trim().escape(),

@@ -23,10 +23,8 @@ exports.purchaseOrder_create = function (req, res, next) {
 
 exports.purchaseOrder_update = [
     // Validate fields.
-    validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
+    //validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
     validator.body('merchandises').not().exists().withMessage('Can not update merchandises'),
-    validator.body('totalamounts').if((value, { req }) => req.body.totalamounts).isFloat({ min: 0 }).trim().withMessage('totalamounts must be a number greater 0.').trim().escape(),
-    validator.body('totalprices').if((value, { req }) => req.body.totalprices).isFloat({ min: 0 }).trim().withMessage('totalprices must be a number greater 0.').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
         // Extract the validation errors from a request.
@@ -40,8 +38,7 @@ exports.purchaseOrder_update = [
         else {
             // Data is valid. Update the record.
             const purchaseOrder = {
-                totalamounts: req.body.totalamounts,
-                totalprices: req.body.totalprices
+               wholesaler:req.body.wholesaler
             }
             // { "omitUndefined": true } 忽略未定义的属性
             PurchaseOrder.findByIdAndUpdate(req.params.id, purchaseOrder, { "omitUndefined": true }, function (err) {
@@ -97,20 +94,8 @@ exports.purchaseOrder_info = function (req, res, next) {
         }
 
         const resData = {
-            // "name": existedPurchaseOrder.merchandise.name,
-            // "price": existedPurchaseOrder.merchandise.price,
-            // "specs": existedPurchaseOrder.merchandise.specs,
-            // "productionDate": existedPurchaseOrder.merchandise.productionDate,
-            // "shelfLife": existedPurchaseOrder.merchandise.shelfLife,
-            // "manufacturer": existedPurchaseOrder.merchandise.manufacturer,
             "date": existedPurchaseOrder.date,
-            "totalamounts": existedPurchaseOrder.totalamounts,
-            "totalprices": existedPurchaseOrder.totalprices,
-            // TODO: name冲突
-            // "name":existedPurchaseOrder.wholesaler.name,
-            // "phone": existedPurchaseOrder.wholesaler.phone,
-            // "address": existedPurchaseOrder.wholesaler.address
-
+            "wholesaler":existedPurchaseOrder.wholesaler
         }
         return res.status(200).send(resData);
     });
