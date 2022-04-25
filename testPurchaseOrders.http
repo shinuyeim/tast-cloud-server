@@ -1,0 +1,73 @@
+//@baseUrl = http://localhost:3000/api/v1
+
+//@baseUrl = http://192.168.16.178:3000/api/v1
+@baseUrl = http://172.26.86.113:3000/api/v1
+
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY1MDcwODkyMywiZXhwIjoxNjUxMzEzNzIzfQ.tWhJBs1WtEgIbssnzb9H-jllP9o3pdt1OyW4BcsYrLA
+
+
+# 进货单
+
+### 新增进货单
+POST {{baseUrl}}/purchaseOrders
+{{authorization}}
+
+
+### 更新进货单
+PUT {{baseUrl}}/purchaseOrders/62662bfeb796f93e70c619ba   
+{{authorization}}
+Content-Type: application/json
+
+{
+ "wholesaler":"6264fc40c52d8d6610f1201d"
+}
+
+
+### 获取进货单列表
+GET {{baseUrl}}/purchaseOrders
+{{authorization}}
+
+
+### 获取进货单信息
+GET {{baseUrl}}/purchaseOrders/626547ba945fa70b5cb42780
+{{authorization}}
+
+
+### 删除进货单
+DELETE {{baseUrl}}/purchaseOrders/624e68f17c5f5635ac2c12b8
+{{authorization}}
+
+
+
+# 进货单Item
+
+### 新增进货单Item
+POST {{baseUrl}}/purchaseOrdersItem
+{{authorization}}
+Content-Type: application/json
+
+{
+  "purchaseOrder":"62662bfeb796f93e70c619ba",
+  "merchandises":"6222e26b3eb8230d88123456"
+}
+
+### 更新进货单Item
+PUT {{baseUrl}}/purchaseOrdersItem/62662c6fb796f93e70c619c1
+{{authorization}}
+Content-Type: application/json
+
+{
+  "amounts":4,
+  "price":50,
+  "merchandises":"6222e26b3eb8230d88123456"
+}
+
+### 获取进货单商品列表
+GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder
+{{authorization}}
+
+
+
+### 获取进货单详情
+GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder/626658878baf0f7164f603af
+{{authorization}}

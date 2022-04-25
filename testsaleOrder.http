@@ -1,0 +1,36 @@
+@baseUrl = http://172.26.86.113:3000/api/v1
+
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY1MDcwODkyMywiZXhwIjoxNjUxMzEzNzIzfQ.tWhJBs1WtEgIbssnzb9H-jllP9o3pdt1OyW4BcsYrLA
+
+
+ # 销售单
+
+### 新增销售单
+POST {{baseUrl}}/saleOrders
+{{authorization}}
+
+
+### 更新销售单
+PUT {{baseUrl}}/saleOrders/6263d1f4526ac6545c42726c
+{{authorization}}
+Content-Type: application/json
+
+{
+  "amounts":23,
+  "prices":120
+}
+
+
+### 获取销售单列表
+GET {{baseUrl}}/saleOrders
+{{authorization}}
+ 
+
+### 获取销售单信息
+GET {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
+{{authorization}}
+
+
+### 删除销售单
+DELETE {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
+{{authorization}}

@@ -148,22 +148,37 @@ exports.purchaseOrderItem_delete = function (req, res, next) {
 };
 
 //在purchaseOrderItem中查找所有属于同一订单编号的商品
-
 exports.purchaseOrderItem_merchandiselist = function (req, res, next) {
 
-    PurchaseOrderItem.findById(req.params.purchaseOrder).exec((err, existedPurchaseOrder) => {
-        if (err) { return next(err) }
-        res.send(req.params.purchaseOrder);
+    const { limit = 20, offset = 0 } = req.query;
 
-        if (!existedPurchaseOrder) {
-            return res.status(422).send({
-                message: "PurchaseOrder not found!"
-            })
-        }
+    async.parallel({
+        total_count: function (callback) {
+            PurchaseOrderItem.countDocuments().exec(callback)
+        },
+        list_PurchaseOrderItem: function (callback) {
+            // find中输入查询条件 比如：detail.find({ age: 21 }, ...) 是在detail中找到所有age为21的条目
 
-        const resData = {
-           "merchandises":existedPurchaseOrder.merchandises
+            //感觉这里不太对，是通过订单ID来查询有多少条，但目前是能查询查询所有的订单，都使用不到ID
+            //PurchaseOrderItem.find({ 'purchaseOrder': req.params.purchaseOrder })
+            
+            // 如果使用下面这样的语句  是能读到信息的  但是不符合要求  这个接口的功能应该是只查询我需要查找的ID
+            PurchaseOrderItem.find()
+                .sort({ 'name': 'descending' })
+                .skip(Number(offset))
+                .limit(Number(limit))
+                .exec(callback)
         }
-        return res.status(200).send(resData);
-    });
+    }, function (err, result) {
+        if (err) { return next(err); }
+        res.status(200).json({
+            metadata: {
+                Total: result.total_count,
+                Limit: Number(limit),
+                LimitOffset: Number(offset),
+                ReturnedRows: result.list_PurchaseOrderItem.length
+            },
+            data: result.list_PurchaseOrderItem
+        })
+    })
 };
