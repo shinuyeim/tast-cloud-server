@@ -157,13 +157,8 @@ exports.purchaseOrderItem_merchandiselist = function (req, res, next) {
             PurchaseOrderItem.countDocuments().exec(callback)
         },
         list_PurchaseOrderItem: function (callback) {
-            // find中输入查询条件 比如：detail.find({ age: 21 }, ...) 是在detail中找到所有age为21的条目
-
             //感觉这里不太对，是通过订单ID来查询有多少条，但目前是能查询查询所有的订单，都使用不到ID
-            //PurchaseOrderItem.find({ 'purchaseOrder': req.params.purchaseOrder })
-            
-            // 如果使用下面这样的语句  是能读到信息的  但是不符合要求  这个接口的功能应该是只查询我需要查找的ID
-            PurchaseOrderItem.find()
+            PurchaseOrderItem.find({ 'purchaseOrder': req.params.purchaseOrderid})
                 .sort({ 'name': 'descending' })
                 .skip(Number(offset))
                 .limit(Number(limit))

@@ -1,10 +1,12 @@
-//@baseUrl = http://localhost:3000/api/v1
+@baseUrl = http://localhost:3000/api/v1
 
 //@baseUrl = http://192.168.16.178:3000/api/v1
 
-@baseUrl = http://172.26.86.113:3000/api/v1
+# @baseUrl = http://172.26.86.113:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY1MDcwODkyMywiZXhwIjoxNjUxMzEzNzIzfQ.tWhJBs1WtEgIbssnzb9H-jllP9o3pdt1OyW4BcsYrLA
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY4N2M5OGY0N2QzNGRkMDFjZGI5ZSIsImlhdCI6MTY1MDg4NzAzNywiZXhwIjoxNjUxNDkxODM3fQ.h6gWDO8MVpUMJdImH8zpT_rJHrzfa83a6aLiGtPhRoc
+
+
 # 登录
 
 ### 用户登录(管理员、顾客)
@@ -12,7 +14,7 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 { 
-  "user_name": "user9",
+  "user_name": "merchant1",
   "password": "123456789"
 }
 
@@ -91,7 +93,7 @@ Content-Type: application/json
    "address":"云南省大坡麻拉"
 }
 
-
+// TODO: 更新商家如果ID错了，响应没有提示！请参考更新批发商的控制器，批发商的那个有提示。
 ### 更新商家
 PUT  {{baseUrl}}/merchants/620a5f9565da8f3ebce22afc
 {{authorization}}
@@ -182,7 +184,7 @@ Content-Type: application/json
 
 
 ### 更新批发商
-PUT {{baseUrl}}/wholesalers/6214db82fddf321fec5a239f
+PUT {{baseUrl}}/wholesalers/62668a748f47d34dd01cdbd6
 {{authorization}}
 Content-Type: application/json
 

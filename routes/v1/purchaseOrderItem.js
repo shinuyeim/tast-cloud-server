@@ -9,9 +9,8 @@ router.post('/', purchaseOrderItem_controller.purchaseOrderItem_create);
 
 router.put('/:id', purchaseOrderItem_controller.purchaseOrderItem_update);
 
-router.get('/purchaseOrder',purchaseOrderItem_controller.purchaseOrderItem_merchandiselist);
-
-// router.get('/purchaseOrder/:id',purchaseOrderItem_controller.purchaseOrderItem_merchandiseListInfo);
+// 这个尾巴上的id是进货单id，不是itemid
+router.get('/purchaseOrder/:purchaseOrderid',purchaseOrderItem_controller.purchaseOrderItem_merchandiselist);
 
 router.delete('/:id', purchaseOrderItem_controller.purchaseOrderItem_delete);
 

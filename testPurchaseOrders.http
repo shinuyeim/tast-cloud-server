@@ -1,10 +1,9 @@
-//@baseUrl = http://localhost:3000/api/v1
+@baseUrl = http://localhost:3000/api/v1
 
 //@baseUrl = http://192.168.16.178:3000/api/v1
-@baseUrl = http://172.26.86.113:3000/api/v1
+# @baseUrl = http://172.26.86.113:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY1MDcwODkyMywiZXhwIjoxNjUxMzEzNzIzfQ.tWhJBs1WtEgIbssnzb9H-jllP9o3pdt1OyW4BcsYrLA
-
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY4N2M5OGY0N2QzNGRkMDFjZGI5ZSIsImlhdCI6MTY1MDg4NzIxMiwiZXhwIjoxNjUxNDkyMDEyfQ.IXRDNw3-GAcwr1oCgZg2dJrMtUFFNJCpHpgHOAHl44o
 
 # 进货单
 
@@ -14,7 +13,7 @@ POST {{baseUrl}}/purchaseOrders
 
 
 ### 更新进货单
-PUT {{baseUrl}}/purchaseOrders/62662bfeb796f93e70c619ba   
+PUT {{baseUrl}}/purchaseOrders/62668a3a8f47d34dd01cdbcf   
 {{authorization}}
 Content-Type: application/json
 
@@ -47,27 +46,21 @@ POST {{baseUrl}}/purchaseOrdersItem
 Content-Type: application/json
 
 {
-  "purchaseOrder":"62662bfeb796f93e70c619ba",
-  "merchandises":"6222e26b3eb8230d88123456"
+  "purchaseOrder":"6266900c8f92d6153c798479",
+  "merchandises":"626689008f47d34dd01cdbbe"
 }
 
 ### 更新进货单Item
-PUT {{baseUrl}}/purchaseOrdersItem/62662c6fb796f93e70c619c1
+PUT {{baseUrl}}/purchaseOrdersItem/62668b8a8f47d34dd01cdbe7
 {{authorization}}
 Content-Type: application/json
 
 {
   "amounts":4,
   "price":50,
-  "merchandises":"6222e26b3eb8230d88123456"
+  "merchandises":"626688de8f47d34dd01cdbba"
 }
 
-### 获取进货单商品列表
-GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder
-{{authorization}}
-
-
-
 ### 获取进货单详情
-GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder/626658878baf0f7164f603af
+GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder/62668a3a8f47d34dd01cdbcf
 {{authorization}}
