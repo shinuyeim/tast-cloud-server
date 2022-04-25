@@ -154,11 +154,11 @@ exports.purchaseOrderItem_merchandiselist = function (req, res, next) {
 
     async.parallel({
         total_count: function (callback) {
-            PurchaseOrderItem.countDocuments().exec(callback)
+            PurchaseOrderItem.find({'purchaseOrder': req.params.purchaseOrderid }).countDocuments().exec(callback)
         },
         list_PurchaseOrderItem: function (callback) {
-            //感觉这里不太对，是通过订单ID来查询有多少条，但目前是能查询查询所有的订单，都使用不到ID
-            PurchaseOrderItem.find({ 'purchaseOrder': req.params.purchaseOrderid})
+            // find中输入查询条件 比如：detail.find({ age: 21 }, ...) 是在detail中找到所有age为21的条目
+            PurchaseOrderItem.find({'purchaseOrder': req.params.purchaseOrderid })
                 .sort({ 'name': 'descending' })
                 .skip(Number(offset))
                 .limit(Number(limit))
@@ -177,3 +177,39 @@ exports.purchaseOrderItem_merchandiselist = function (req, res, next) {
         })
     })
 };
+
+// //在purchaseOrderItem中查找所有属于同一订单编号的商品
+// exports.purchaseOrderItem_merchandiseListInfo = function (req, res, next) {
+//     const { limit = 20, offset = 0 } = req.query;
+
+//     async.parallel({
+//         total_count: function (callback) {
+//             PurchaseOrderItem.find({ 'purchaseOrder': req.params.id }).countDocuments().exec(callback)
+//         },    // 现在这里可以查到了特定订单ID的总共数目 
+//         list_PurchaseOrderItem: function (callback) {
+//             // find中输入查询条件 比如：detail.find({ age: 21 }, ...) 是在detail中找到所有age为21的条目
+
+//             //感觉这里不太对，是通过订单ID来查询有多少条，但目前是能查询查询所有的订单，都使用不到ID
+//             //PurchaseOrderItem.find({ 'purchaseOrder': req.params.purchaseOrder })
+
+//             // 如果使用下面这样的语句  是能读到信息的  但是不符合要求  这个接口的功能应该是只查询我需要查找的ID
+//             PurchaseOrderItem.find({ 'purchaseOrder': req.params.id })
+//                 .sort({ 'name': 'descending' })
+//                 .skip(Number(offset))
+//                 .limit(Number(limit))
+//                 .exec(callback)
+//         },
+//     }, function (err, result) {
+//         if (err) { return next(err); }
+//         res.status(200).json({
+//             metadata: {
+//                 Total: result.total_count,
+//                 Limit: Number(limit),
+//                 LimitOffset: Number(offset),
+//                 ReturnedRows: result.list_PurchaseOrderItem.length
+//             },
+//             data: result.list_PurchaseOrderItem
+//         })
+//     })
+//     //res.send(req.params.purchaseOrder);  
+// }

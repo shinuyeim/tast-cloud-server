@@ -15,4 +15,4 @@ router.get('/', saleOrder_controller.saleOrder_list);
 
 router.delete('/:id', saleOrder_controller.saleOrder_delete);
 
-module.exports = router;                                                          
+module.exports = router;

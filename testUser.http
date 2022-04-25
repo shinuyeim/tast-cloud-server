@@ -1,10 +1,9 @@
-@baseUrl = http://localhost:3000/api/v1
+//@baseUrl = http://localhost:3000/api/v1
 
 //@baseUrl = http://192.168.16.178:3000/api/v1
+@baseUrl = http://172.26.86.113:3000/api/v1
 
-# @baseUrl = http://172.26.86.113:3000/api/v1
-
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY4N2M5OGY0N2QzNGRkMDFjZGI5ZSIsImlhdCI6MTY1MDg4NzAzNywiZXhwIjoxNjUxNDkxODM3fQ.h6gWDO8MVpUMJdImH8zpT_rJHrzfa83a6aLiGtPhRoc
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY5OGEyYjlmYWY2MzZmNGUxMGNkNSIsImlhdCI6MTY1MDg5MDkyNywiZXhwIjoxNjUxNDk1NzI3fQ.ADj9PF48t9yHxRIMyaVbfp0s0JWpvzejfhXQFTAYtpM
 
 
 # 登录
@@ -14,8 +13,8 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 { 
-  "user_name": "merchant1",
-  "password": "123456789"
+  "user_name": "user10",
+  "password": "123456"
 }
 
 
@@ -27,7 +26,7 @@ POST {{baseUrl}}/register/admin
 Content-Type: application/json
 
 {
-  "user_name": "user2",
+  "user_name": "user10",
   "password": "123456"
 }
 
