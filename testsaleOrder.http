@@ -11,13 +11,12 @@ POST {{baseUrl}}/saleOrders
 
 
 ### 更新销售单
-PUT {{baseUrl}}/saleOrders/6263d1f4526ac6545c42726c
+PUT {{baseUrl}}/saleOrders/6267539cd656ca6a90292c5d
 {{authorization}}
 Content-Type: application/json
 
 {
-  "amounts":23,
-  "prices":120
+    "customer":"6263cd40526ac6545c427267"
 }
 
 
@@ -27,10 +26,42 @@ GET {{baseUrl}}/saleOrders
  
 
 ### 获取销售单信息
-GET {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
+GET {{baseUrl}}/saleOrders/6267539cd656ca6a90292c5d
 {{authorization}}
 
 
 ### 删除销售单
-DELETE {{baseUrl}}/saleOrders/6213750ec70472232c9fd005
+DELETE {{baseUrl}}/saleOrders/6267539cd656ca6a90292c5d
+{{authorization}}
+
+
+# 销售单Item
+
+### 新增销售单Item
+POST {{baseUrl}}/saleOrdersItem
+{{authorization}}
+Content-Type: application/json
+
+{
+  "saleOrder":"6266900c8f92d6153c798479",
+  "merchandises":"626689008f47d34dd01cdbbe"
+}
+
+### 更新销售单Item
+PUT {{baseUrl}}/saleOrdersItem/6267583923be8658a4cf2a8a
+{{authorization}}
+Content-Type: application/json
+
+{
+  "amounts":4,
+  "price":50,
+  "merchandises":"626688de8f47d34dd01cdbba"
+}
+
+### 获取销售单详情
+GET {{baseUrl}}/saleOrdersItem/saleOrder/6266900c8f92d6153c798479
+{{authorization}}
+
+### 删除进货单Item
+DELETE {{baseUrl}}/saleOrdersItem/6267583923be8658a4cf2a8a
 {{authorization}}

@@ -25,11 +25,7 @@ exports.saleOrder_create = function (req, res, next) {
 
 exports.saleOrder_update = [
     // Validate fields.
-    // TODO: name :"" 会使name变为空
-    validator.body('customer').not().exists().withMessage('Can not update customer'),
-    validator.body('merchandises').not().exists().withMessage('Can not update merchandises'),
-    validator.body('amounts').if((value, { req }) => req.body.amounts).isFloat({ min: 0 }).trim().withMessage('amounts must be a number greater 0.').trim().escape(),
-    validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('price must be a number greater 0.').trim().escape(),
+    validator.body('customer').not().isEmpty().trim().withMessage('customer is empty').escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
         // Extract the validation errors from a request.
@@ -43,8 +39,7 @@ exports.saleOrder_update = [
         else {
             // Data is valid. Update the record.
             const saleOrder = {
-                amounts: req.body.amounts,
-                prices: req.body.prices
+                customer: req.body.customer
             }
             // { "omitUndefined": true } 忽略未定义的属性
             SaleOrder.findByIdAndUpdate(req.params.id, saleOrder, { "omitUndefined": true }, function (err) {
@@ -100,19 +95,8 @@ exports.saleOrder_info = function (req, res, next) {
         }
 
         const resData = {
-            // "name": existedSaleOrder.merchandise.name,
-            // "price": existedSaleOrder.merchandise.price,
-            // "specs": existedSaleOrder.merchandise.specs,
-            // "productionDate": existedSaleOrder.merchandise.productionDate,
-            // "shelfLife": existedSaleOrder.merchandise.shelfLife,
-            // "manufacturer": existedSaleOrder.merchandise.manufacturer,
-            "date": existedSaleOrder.date,
-            "amounts": existedSaleOrder.amounts,
-            "prices": existedSaleOrder.prices,
-            // TODO: name冲突
-            // "name":existedSaleOrder.customer.name,
-            // "phone": existedSaleOrder.customer.phone,
-            // "address": existedSaleOrder.customer.address
+            "customer":existedSaleOrder.customer,
+            "date": existedSaleOrder.date
         }
         return res.status(200).send(resData);
     });

@@ -13,12 +13,12 @@ POST {{baseUrl}}/purchaseOrders
 
 
 ### 更新进货单
-PUT {{baseUrl}}/purchaseOrders/62668a3a8f47d34dd01cdbcf   
+PUT {{baseUrl}}/purchaseOrders/626653f3b796f93e70c619d0   
 {{authorization}}
 Content-Type: application/json
 
 {
- "wholesaler":"6264fc40c52d8d6610f1201d"
+ "wholesaler":"6264fc40c52d8d6610f12020"
 }
 
 
@@ -28,7 +28,7 @@ GET {{baseUrl}}/purchaseOrders
 
 
 ### 获取进货单信息
-GET {{baseUrl}}/purchaseOrders/626547ba945fa70b5cb42780
+GET {{baseUrl}}/purchaseOrders/626653f3b796f93e70c619d0
 {{authorization}}
 
 
@@ -51,7 +51,7 @@ Content-Type: application/json
 }
 
 ### 更新进货单Item
-PUT {{baseUrl}}/purchaseOrdersItem/62668b8a8f47d34dd01cdbe7
+PUT {{baseUrl}}/purchaseOrdersItem/62654554d32fd921dc8ebf31
 {{authorization}}
 Content-Type: application/json
 

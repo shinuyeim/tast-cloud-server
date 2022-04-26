@@ -24,7 +24,7 @@ exports.purchaseOrder_create = function (req, res, next) {
 exports.purchaseOrder_update = [
     // Validate fields.
     //validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
-    validator.body('merchandises').not().exists().withMessage('Can not update merchandises'),
+    validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
     // Process request after validation and sanitization.
     (req, res, next) => {
         // Extract the validation errors from a request.
