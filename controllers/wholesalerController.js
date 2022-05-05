@@ -132,4 +132,8 @@ exports.wholesaler_delete = function (req, res, next) {
         // Successful 
         res.status(204).send();
     });
-}
+};
+
+// exports.wholesaler_findName = function (req, res,next){
+//     Wholesaler
+// }

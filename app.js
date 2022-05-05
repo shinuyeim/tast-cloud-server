@@ -13,10 +13,17 @@ var app = express();
 
 // Set up mongoose connection
 var mongoose = require("mongoose");
-var mongoDB = process.env.DB_HOST+"?retryWrites=true";
+var mongoDBUrl = process.env.DB_HOST+"?retryWrites=true";
 mongoose.set("useCreateIndex", true);
 mongoose.set("useFindAndModify", false);
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoDBUrl, {
+  auth: { "authSource": "cloudDB" },
+  user: process.env.DB_USER,
+  pass: process.env.DB_PWD,
+  poolSize: 10,
+  useNewUrlParser: true, 
+  useUnifiedTopology: true
+});
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));

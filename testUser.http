@@ -3,8 +3,9 @@
 //@baseUrl = http://192.168.16.178:3000/api/v1
 @baseUrl = http://172.26.86.113:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY5OGEyYjlmYWY2MzZmNGUxMGNkNSIsImlhdCI6MTY1MDg5MDkyNywiZXhwIjoxNjUxNDk1NzI3fQ.ADj9PF48t9yHxRIMyaVbfp0s0JWpvzejfhXQFTAYtpM
+# @baseUrl = http://43.138.144.204:3000/api/v1
 
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNzEwYzVmNjEwYzYyNGY1YzRiZjgzNCIsImlhdCI6MTY1MTY2NzcyOCwiZXhwIjoxNjUyMjcyNTI4fQ.V8A4Jur8xhP2BrgneX08TGeKNsS0xLMWMNxHl9fj0xg
 
 # 登录
 
@@ -13,7 +14,7 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 { 
-  "user_name": "user10",
+  "user_name": "customer1",
   "password": "123456"
 }
 
@@ -26,7 +27,7 @@ POST {{baseUrl}}/register/admin
 Content-Type: application/json
 
 {
-  "user_name": "user10",
+  "user_name": "admin2",
   "password": "123456"
 }
 
@@ -39,10 +40,10 @@ POST {{baseUrl}}/register/customer
 Content-Type: application/json
 
 {
-  "user_name": "user",
-  "password": "12345678",
-  "name":"用户1",
-  "phone":"18569853214",
+  "user_name": "customer1",
+  "password": "123456",
+  "name":"小程序顾客1",
+  "phone":"18585963214",
   "address":"云南昆明"
 }
 
@@ -72,7 +73,7 @@ GET {{baseUrl}}/customers/620256eee9871555d8e48750
 //  ToDo: 删除顾客时并不能删除user表里面的下的信息。只能删除顾客表里面的信息  
 //已解决，只不过不知道要哪个版本，老版本不删除user 新版本删除user
 ### 删除顾客
-DELETE {{baseUrl}}/customers/62025ff2e9871555d8e48760
+DELETE {{baseUrl}}/customers/620256eee9871555d8e48750
 {{authorization}}
 
 
@@ -84,17 +85,17 @@ POST {{baseUrl}}/register/merchant
 Content-Type: application/json
 
 {
-   "user_name": "user9",
-   "password": "123456789",
+   "user_name": "merchant1",
+   "password": "123456",
    "name":"民心商店",
    "phone":"15965832145",
    "introduction":"农资经营",
-   "address":"云南省大坡麻拉"
+   "address":"云南省曲靖市"
 }
 
 // TODO: 更新商家如果ID错了，响应没有提示！请参考更新批发商的控制器，批发商的那个有提示。
 ### 更新商家
-PUT  {{baseUrl}}/merchants/620a5f9565da8f3ebce22afc
+PUT  {{baseUrl}}/merchants/6268d5524b955c3138063c42
 {{authorization}}
 Content-Type: application/json
 
@@ -131,25 +132,24 @@ POST {{baseUrl}}/merchandises
 Content-Type: application/json
 
 {
-  "name": "敌杀死",
-  "price": 20,
-  "qrcode":1524224
+  "name": "种子",
+  "price": 20
+  //"qrcode":1524224
 }
 
 
 ### 更新商品信息
-PUT {{baseUrl}}/merchandises/620fac3c7a5dc3356c7ab883
+PUT {{baseUrl}}/merchandises/6271266e610c624f5c4bf870
 {{authorization}}
 Content-Type: application/json
 
 {
-  "name":"敌敌畏",
-  "price":"25",
-  "specs":"袋",
-  "productionDate":"",
-  "shelfLife":"",
-  "manufacturer":"",
-  "qrcode":""
+  "name":"百草枯",
+  "price":"20",
+  "specs":"瓶",
+  "productionDate":"2022-03-08",
+  "shelfLife":"24",
+  "manufacturer":"昆明制药厂"
 }
 
 
@@ -159,7 +159,7 @@ GET {{baseUrl}}/merchandises
 
 
 ### 获取商品信息
-GET {{baseUrl}}/merchandises/620fac3c7a5dc3356c7ab883
+GET {{baseUrl}}/merchandises/626a06c0d96fa75ef062fcff
 {{authorization}}
 
 

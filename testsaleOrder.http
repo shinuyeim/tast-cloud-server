@@ -1,6 +1,7 @@
 @baseUrl = http://172.26.86.113:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGE1Zjk0NjVkYThmM2ViY2UyMmFmYSIsImlhdCI6MTY1MDcwODkyMywiZXhwIjoxNjUxMzEzNzIzfQ.tWhJBs1WtEgIbssnzb9H-jllP9o3pdt1OyW4BcsYrLA
+@baseUrl = http://43.138.144.204:3000/api/v1
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjg4MjlhZTRhYjhlNmU3NDg0ZDI1OSIsImlhdCI6MTY1MTAyMTA3MywiZXhwIjoxNjUxNjI1ODczfQ.tbHULwW3JXxLGAycdV-F2aq-ZRHlZiPG8zSK2wvC_lY
 
 
  # 销售单

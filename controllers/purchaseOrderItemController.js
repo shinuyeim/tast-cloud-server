@@ -46,7 +46,7 @@ exports.purchaseOrderItem_update = [
     //validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),
     validator.body('merchandises').not().isEmpty().trim().withMessage('merchandises is empty').escape(),
     validator.body('amounts').if((value, { req }) => req.body.totalamounts).isFloat({ min: 0 }).trim().withMessage('amounts must be a number greater 0.').trim().escape(),
-    validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('prices must be a number greater 0.').trim().escape(),
+    //validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('prices must be a number greater 0.').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
         // Extract the validation errors from a request.
@@ -63,7 +63,7 @@ exports.purchaseOrderItem_update = [
             const purchaseOrderItem = {
                 merchandises: req.body.merchandises,
                 amounts: req.body.amounts,
-                price: req.body.price
+                //price: req.body.price
             }
             // { "omitUndefined": true } 忽略未定义的属性
             PurchaseOrderItem.findByIdAndUpdate(req.params.id, purchaseOrderItem, { "omitUndefined": true }, function (err) {

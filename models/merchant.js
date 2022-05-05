@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// 商家（厂家）
 const MerchantSchema = new Schema({
 	user: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true },
 	name: { type: String, maxlength: 20 },

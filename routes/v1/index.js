@@ -7,7 +7,7 @@ var User = require("../../models/user");
 var Admin = require("../../models/admin");
 var Customer = require("../../models/customer");
 var Merchant = require("../../models/merchant");
-//var merchandise = require("../../models/merchandise");
+// var merchandise = require("../../models/merchandise");
 
 // Require Router
 const userRouter = require("./user");
@@ -27,7 +27,7 @@ var user_controller = require("../../controllers/userController");
 var admin_controller = require("../../controllers/adminController");
 var customer_controller = require("../../controllers/customerController");
 var merchant_controller = require("../../controllers/merchantController");
-//var merchandise_controller=require("../../controllers/merchandiseController");
+// var merchandise_controller=require("../../controllers/merchandiseController");
 
 // Router login and register
 router.post("/login", user_controller.user_login);

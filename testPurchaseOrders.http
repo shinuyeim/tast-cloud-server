@@ -3,7 +3,7 @@
 //@baseUrl = http://192.168.16.178:3000/api/v1
 @baseUrl = http://172.26.86.113:3000/api/v1
 
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY5OGEyYjlmYWY2MzZmNGUxMGNkNSIsImlhdCI6MTY1MDg5MDkyNywiZXhwIjoxNjUxNDk1NzI3fQ.ADj9PF48t9yHxRIMyaVbfp0s0JWpvzejfhXQFTAYtpM
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNzEwYzVmNjEwYzYyNGY1YzRiZjgzNCIsImlhdCI6MTY1MTY2NzcyOCwiZXhwIjoxNjUyMjcyNTI4fQ.V8A4Jur8xhP2BrgneX08TGeKNsS0xLMWMNxHl9fj0xg
 
 # 进货单
 
@@ -13,12 +13,12 @@ POST {{baseUrl}}/purchaseOrders
 
 
 ### 更新进货单
-PUT {{baseUrl}}/purchaseOrders/626653f3b796f93e70c619d0   
+PUT {{baseUrl}}/purchaseOrders/62689cda880b9559e4ad0ddc   
 {{authorization}}
 Content-Type: application/json
 
 {
- "wholesaler":"6264fc40c52d8d6610f12020"
+ "wholesaler":"6268d5524b955c3138063c42"
 }
 
 
@@ -28,7 +28,7 @@ GET {{baseUrl}}/purchaseOrders
 
 
 ### 获取进货单信息
-GET {{baseUrl}}/purchaseOrders/626653f3b796f93e70c619d0
+GET {{baseUrl}}/purchaseOrders/62689cda880b9559e4ad0ddc
 {{authorization}}
 
 
@@ -46,23 +46,22 @@ POST {{baseUrl}}/purchaseOrdersItem
 Content-Type: application/json
 
 {
-  "purchaseOrder":"6266900c8f92d6153c798479",
-  "merchandises":"626689008f47d34dd01cdbbe"
+  "purchaseOrder":"62689cda880b9559e4ad0ddc",
+  "merchandises":"626939deb431084f24c74f34"
 }
 
 ### 更新进货单Item
-PUT {{baseUrl}}/purchaseOrdersItem/62654554d32fd921dc8ebf31
+PUT {{baseUrl}}/purchaseOrdersItem/62693b82295cb52b9456b839
 {{authorization}}
 Content-Type: application/json
 
 {
   "amounts":4,
-  "price":50,
   "merchandises":"626688de8f47d34dd01cdbba"
 }
 
 ### 获取进货单详情
-GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder/6264fd6ab2a8ca35106462dc
+GET {{baseUrl}}/purchaseOrdersItem/purchaseOrder/62689cda880b9559e4ad0ddc
 {{authorization}}
 
 

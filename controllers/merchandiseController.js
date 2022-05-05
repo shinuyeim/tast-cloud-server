@@ -24,7 +24,7 @@ exports.merchandise_create = [
                 name: req.body.name,
                 price: req.body.price,
                 qrcode: req.body.qrcode,
-                merchant: req.auth.merchantid
+                merchant: req.auth.merchantid  //获取商家ID需要商家登录，感觉不合理 经营者在添加商品的时候就应该可以选择商家
             });
             // Save merchandise.
             merchandise.save(function (err) {
@@ -42,7 +42,7 @@ exports.merchandise_update = [
     validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0, max: 99999 }).trim().withMessage('price must be a number between 0~99999.').trim().escape(),
     validator.body('specs').if((value, { req }) => req.body.specs).isLength({ max: 1 }).trim().escape(),
     validator.body('productionDate').if((value, { req }) => req.body.productionDate).trim().escape(),
-    validator.body('shelfLife').if((value, { req }) => req.body.shelfLife).isFloat({ min: 0, max: 20 }).escape(),
+    validator.body('shelfLife').if((value, { req }) => req.body.shelfLife).isFloat({ min: 0, max: 36 }).escape(),
     validator.body('manufacturer').if((value, { req }) => req.body.manufacturer).isLength({ max: 40 }).trim().withMessage('manufacturer must be a number between 0~40.').escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
