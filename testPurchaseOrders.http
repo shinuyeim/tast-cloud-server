@@ -10,6 +10,11 @@
 ### 新增进货单
 POST {{baseUrl}}/purchaseOrders
 {{authorization}}
+Content-Type: application/json
+
+{
+  "date":"2022-03-05"
+}
 
 
 ### 更新进货单

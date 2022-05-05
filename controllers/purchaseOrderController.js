@@ -11,7 +11,7 @@ var async = require('async');
 
 exports.purchaseOrder_create = function (req, res, next) {
     const purchaseOrder = new PurchaseOrder({
-
+        date: req.body.date
     });
     //save purchaseOrder.
     purchaseOrder.save(function (err) {
@@ -67,10 +67,10 @@ exports.purchaseOrder_list = function (req, res, next) {
                 .exec(callback)
         },
         //添加一个根据订单ID里面的 wholesalerID 能查询到商家名称的函数
-       wholesalerName: function (callback) {
+        wholesalerName: function (callback) {
             //如何通过进货单内的批发商ID找到批发商集合里面的批发商名称
             //find中输入查询条件 比如：detail.find({ age: 21 }, ...) 是在detail中找到所有age为21的条目
-            PurchaseOrder.find({ wholesaler:'6268d5524b955c3138063c42'}).exec(callback)
+            PurchaseOrder.find({ wholesaler: '6268d5524b955c3138063c42' }).exec(callback)
         }
 
     }, function (err, result) {

@@ -11,7 +11,7 @@ exports.saleOrder_create = function (req, res, next) {
     // Create SaleOrder object with escaped and trimmed data
     const saleOrder = new SaleOrder(
         {
-
+            date: req.body.date
         }
     );
 
@@ -95,7 +95,7 @@ exports.saleOrder_info = function (req, res, next) {
         }
 
         const resData = {
-            "customer":existedSaleOrder.customer,
+            "customer": existedSaleOrder.customer,
             "date": existedSaleOrder.date
         }
         return res.status(200).send(resData);

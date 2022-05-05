@@ -40,7 +40,6 @@ exports.purchaseOrderItem_create = [
     }
 ];
 
-
 exports.purchaseOrderItem_update = [
     // Validate fields.
     //validator.body('wholesaler').not().exists().withMessage('Can not update wholesaler'),

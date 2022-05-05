@@ -95,17 +95,17 @@ Content-Type: application/json
 
 // TODO: 更新商家如果ID错了，响应没有提示！请参考更新批发商的控制器，批发商的那个有提示。
 ### 更新商家
-PUT  {{baseUrl}}/merchants/6268d5524b955c3138063c42
+PUT  {{baseUrl}}/merchants/62693e2bd96fa75ef062fa45
 {{authorization}}
 Content-Type: application/json
 
 {
-  "name": "盒马",
-  "phone": "18514965824",
-  "introduction": "盒马是阿里巴巴集团旗下，以数据和技术驱动的新零售平台。盒马希望为消费者打造社区化的一站式新零售体验中心，用科技和人情味带给人们“鲜美生活”",
-  "address": "张杨路3611号金桥国际商业广场1座B1层",
-  "delivery_cost": 5,
-  "min_delivery_price": 20
+  "name": "昆明制药厂",
+  "phone": "18596857595",
+  "introduction": " 昆明农药有限公司成立于1980-09-09，注册资本为1000万元人民币",
+  "address": "昆明市富民县罗免镇高仓村",
+  "delivery_cost": 1,
+  "min_delivery_price": 10
 }
 
 
@@ -178,12 +178,12 @@ POST {{baseUrl}}/wholesalers
 Content-Type: application/json
 
 {
-  "name": "人民商店"
+  "name": "亿家农资批发店"
 }
 
 
 ### 更新批发商
-PUT {{baseUrl}}/wholesalers/62668a748f47d34dd01cdbd6
+PUT {{baseUrl}}/wholesalers/6273c176cb3a132d4879ae5a
 {{authorization}}
 Content-Type: application/json
 

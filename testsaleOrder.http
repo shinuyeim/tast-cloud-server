@@ -1,7 +1,7 @@
 @baseUrl = http://172.26.86.113:3000/api/v1
 
-@baseUrl = http://43.138.144.204:3000/api/v1
-@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjg4MjlhZTRhYjhlNmU3NDg0ZDI1OSIsImlhdCI6MTY1MTAyMTA3MywiZXhwIjoxNjUxNjI1ODczfQ.tbHULwW3JXxLGAycdV-F2aq-ZRHlZiPG8zSK2wvC_lY
+//@baseUrl = http://43.138.144.204:3000/api/v1
+@authorization = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNzEwYzVmNjEwYzYyNGY1YzRiZjgzNCIsImlhdCI6MTY1MTY2NzcyOCwiZXhwIjoxNjUyMjcyNTI4fQ.V8A4Jur8xhP2BrgneX08TGeKNsS0xLMWMNxHl9fj0xg
 
 
  # 销售单
@@ -9,15 +9,19 @@
 ### 新增销售单
 POST {{baseUrl}}/saleOrders
 {{authorization}}
+Content-Type: application/json
 
+{
+  "date":"2022-03-05"
+}
 
 ### 更新销售单
-PUT {{baseUrl}}/saleOrders/6267539cd656ca6a90292c5d
+PUT {{baseUrl}}/saleOrders/6268865ae4ab8e6e7484d272
 {{authorization}}
 Content-Type: application/json
 
 {
-    "customer":"6263cd40526ac6545c427267"
+    "customer":"62710c60610c624f5c4bf836"
 }
 
 
@@ -44,23 +48,22 @@ POST {{baseUrl}}/saleOrdersItem
 Content-Type: application/json
 
 {
-  "saleOrder":"6266900c8f92d6153c798479",
-  "merchandises":"626689008f47d34dd01cdbbe"
+  "saleOrder":"62688676e141e368f0fe11b7",
+  "merchandises":"6271266e610c624f5c4bf870"
 }
 
 ### 更新销售单Item
-PUT {{baseUrl}}/saleOrdersItem/6267583923be8658a4cf2a8a
+PUT {{baseUrl}}/saleOrdersItem/6273689e02dfea5af011c36b
 {{authorization}}
 Content-Type: application/json
 
 {
   "amounts":4,
-  "price":50,
-  "merchandises":"626688de8f47d34dd01cdbba"
+  "merchandises":"626939deb431084f24c74f34"
 }
 
 ### 获取销售单详情
-GET {{baseUrl}}/saleOrdersItem/saleOrder/6266900c8f92d6153c798479
+GET {{baseUrl}}/saleOrdersItem/saleOrder/62688676e141e368f0fe11b7
 {{authorization}}
 
 ### 删除进货单Item

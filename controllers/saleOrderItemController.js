@@ -45,7 +45,7 @@ exports.saleOrderItem_update = [
     // Validate fields.
     validator.body('merchandises').not().isEmpty().trim().withMessage('merchandises is empty').escape(),
     validator.body('amounts').if((value, { req }) => req.body.totalamounts).isFloat({ min: 0 }).trim().withMessage('amounts must be a number greater 0.').trim().escape(),
-    validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('prices must be a number greater 0.').trim().escape(),
+    //validator.body('price').if((value, { req }) => req.body.price).isFloat({ min: 0 }).trim().withMessage('prices must be a number greater 0.').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
         // Extract the validation errors from a request.
@@ -62,7 +62,7 @@ exports.saleOrderItem_update = [
             const saleOrderItem = {
                 merchandises: req.body.merchandises,
                 amounts: req.body.amounts,
-                price: req.body.price
+                //price: req.body.price
             }
             // { "omitUndefined": true } 忽略未定义的属性
             SaleOrderItem.findByIdAndUpdate(req.params.id, saleOrderItem, { "omitUndefined": true }, function (err) {
